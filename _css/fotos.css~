@@ -1,0 +1,8 @@
+.container img {
+    display: block;
+    max-width:800px;
+    max-height:850px;
+    width: auto;
+    height: auto;
+	margin: -550px 800px;
+}

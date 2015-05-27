@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset= "UTF-8"/>
+    <title>Protótipo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="_css/estilo.css"/>
+	<link rel="stylesheet" type="text/css" href="_css/fotos.css"/>
+	<link rel="stylesheet" type="text/css" href="_css/form.css"/>
+	<link rel="stylesheet" type="text/css" href="_css/menu.css"/>
+	<script src="_javascript/jquery-2.1.4.min.js"></script>
+    <script src="_javascript/funcoes.js"></script>
+	<script src="_javascript/menu.js"></script>
+
+</head>
+
+
+<body>
+
+
+<div id="menu"> <!-- menu -->
+<ul id="nav">
+	<li><a href="#">Página Inicial</a>
+    	<ul>
+        	<li><a href="#">Submenu 1</a></li>
+            <li><a href="#">Submenu 2</a></li>
+            <li><a href="#">Submenu 3</a></li>
+        </ul>
+	</li>
+    
+    <li><a href="#">Projeto</a>
+    	<ul>
+        	<li><a href="#">Submenu 2-1</a></li>
+            <li><a href="#">Submenu 2-2</a></li>
+            <li><a href="#">Submenu 2-3</a></li>
+            <li><a href="#">Submenu 2-4</a></li>
+		</ul>
+	</li>
+	
+    <li><a href="#">Contato</a>
+    	<ul>
+        	<li><a href="#">Submenu 3-1</a></li>
+            <li><a href="#">Submenu 3-2</a></li>
+            <li><a href="#">Submenu 3-3</a></li>
+		</ul>
+	</li>
+</ul>
+
+</div>
+
+<div id="cabecalho"> <!--cabeçalho-->
+    <hgroup>
+        <h1>Math@Cpt</h1>
+        <h2>Protótipo de ferramenta voltada para o ensino de Matemática</h2>
+    </hgroup>
+
+</div>
+
+<div id='formulario'> <!--fomulário para entrada das repostas-->
+		<br>
+		<br>
+
+
+		<label>Digite a função f(x):</label>
+		<button class="btn-help" id="ajuda1">?</button>
+		<input type="text" id="ajuda1" name="ajuda1" placeholder="f(x)=ax^2+bx+c ou ax^2+bx+c">
+
+
+		<label>Digite o domínio da função:</label>
+		<button class="btn-help" id="ajuda2">?</button>
+  		<input type="text" id="dominio_funcao" name="dominio_funcao" placeholder="Domínio da função">
+  		<button class="btn-func" id="botaoDominio"> Enviar</button>
+		<br>
+		<br>
+
+
+  		<label>Ponto de intersecção da curva com o eixo X :</label>
+  		<button class="btn-help" id="ajuda3">?</button>
+  		<input type="text" id="itr_X" name="itr_X" readOnly="true">
+		<button class="btn-func" id="botaoItrX" disabled=true> Enviar </button>
+		<br>
+		<br>
+
+
+  		<label>Ponto de intersecção da curva com o eixo Y:</label>
+  		<button class="btn-help" id="ajuda4">?</button>
+  		<input type="text" id="itr_Y" name="itr_Y" readOnly="true">
+		<button class="btn-func" id="botaoItrY"  disabled=true> Enviar </button>
+		<br>
+		<br>
+
+
+  		<label>Pontos críticos:</label>
+  		<button class="btn-help" id="ajuda5">?</button>
+  		<input type="text" id="pontos_criticos" name="pontos_criticos" readOnly="true">
+		<button class="btn-func" id="botaoPontoCritico"  disabled=true> Enviar </button>
+		<br>
+		<br>
+
+
+  		<label>Máximo da função:</label>
+  		<button class="btn-help" id="ajuda6">?</button>
+  		<input type="text" id="maximo" name="maximo" readOnly="true">
+		<button class="btn-func" id="botaoMaximo" disabled=true> Enviar </button>
+		<br>
+		<br>
+		
+		
+  		<label>Mínimo da função:</label>
+  		<button class="btn-help" id="ajuda7">?</button>
+  		<input type="text" id="minimo" name="minimo" readOnly="true">
+		<button class="btn-func" id="botaoMinimo"  disabled=true> Enviar </button>
+		<br>
+		<br>
+
+
+  		<label>Pontos de inflexão:</label>
+  		<button class="btn-help" id="ajuda8">?</button>
+  		<input type="text" id="pontos_de_inflexao" name="pontos_de_inflexao" pattern="[A-Za-z0-9]{6}" title="Promo codes consist of 6 alphanumeric characters." readOnly="true">
+		<button class="btn-func" id="botaoPtInflexao" disabled=true> Enviar </button>
+		<br>
+		<br>   
+   		 
+
+  		<label>Determine a concavidade:</label>
+  		<button class="btn-help" id="ajuda9">?</button>
+  		<input type="text" id="concavidade" name="concavidade" readOnly="true">
+		<button class="btn-func" id="botaoConcavidade"  disabled=true> Enviar </button>
+		<br>
+		<br>
+
+
+
+
+</div>
+
+<div id="cop">
+	Copyright 2015 - by Maryklayne
+	Facebook | Twitter
+</div>
+
+
+</body>
+</html>
+
