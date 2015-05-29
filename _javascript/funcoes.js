@@ -66,10 +66,8 @@ $(document).ready(function(){
 	    var variavel = '#ajuda'+ i;
 	    $(variavel).toggle();
 	    var resp = i-2;
-	    $('#resp'+resp).toggle();
-	    
+	    $('#resp'+resp).toggle();  
 	}
-
 	$('.campoTxt').keypress(function(event) {
 		var valor = $(this).next().attr('id');
 		if (event.keyCode == '13') {
@@ -80,16 +78,12 @@ $(document).ready(function(){
 			}
 		}
 	});
-	
-	
-	
     $('.btn-func').click(function(){
         enviarFuncao($(this).attr('id'));
         if ($(this).attr('id')!="botaoDominio"){
         	$(this).hide(1000);
     	}
     });
-
 });
 
 

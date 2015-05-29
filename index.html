@@ -3,9 +3,12 @@
 <head>
 	<meta charset= "UTF-8"/>
     <title>Protótipo</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+ 	
+
 	<link rel="stylesheet" type="text/css" href="_css/estilo.css"/>
 	<link rel="stylesheet" type="text/css" href="_css/fotos.css"/>
 	<link rel="stylesheet" type="text/css" href="_css/form.css"/>
@@ -18,35 +21,7 @@
 
 <body>
 
-<div id="menu"> <!-- menu -->
-<ul id="nav">
-	<li><a href="#">Página Inicial</a>
-    	<ul>
-        	<li><a href="#">Submenu 1</a></li>
-            <li><a href="#">Submenu 2</a></li>
-            <li><a href="#">Submenu 3</a></li>
-        </ul>
-	</li>
-    
-    <li><a href="#">Projeto</a>
-    	<ul>
-        	<li><a href="#">Submenu 2-1</a></li>
-            <li><a href="#">Submenu 2-2</a></li>
-            <li><a href="#">Submenu 2-3</a></li>
-            <li><a href="#">Submenu 2-4</a></li>
-		</ul>
-	</li>
-	
-    <li><a href="#">Contato</a>
-    	<ul>
-        	<li><a href="#">Submenu 3-1</a></li>
-            <li><a href="#">Submenu 3-2</a></li>
-            <li><a href="#">Submenu 3-3</a></li>
-		</ul>
-	</li>
-</ul>
 
-</div>
 
 <div id="cabecalho"> <!--cabeçalho-->
     <hgroup>
@@ -59,7 +34,16 @@
 
 		<label>Digite a função f(x):</label>
 		<button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal1" id="ajuda1">?</button>
-		<input class="campoTxt" type="text" id="ajuda1" name="ajuda1" placeholder="f(x)=ax^2+bx+c ou ax^2+bx+c">
+		<br>
+		<!--<input class="campoTxt" type="text" id="ajuda1" name="ajuda1" placeholder="f(x)=ax^2+bx+c ou ax^2+bx+c">-->
+		
+		<select class="span">
+  			<option>f(x)=ax^y + bx + c</option>
+  			<option>f(x)=ax</option>
+  			<option>f(x)=ax^y + bx</option>
+  			<option>f(x)=bx + c</option>
+		</select>
+		<br><br>
 
 		<label id='label'>Digite o domínio da função:</label>
 		<button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal2" id="ajuda2">?</button>
@@ -294,6 +278,7 @@
     </div>
   </div>
 </div>
+
 
 
 <div id="cop">
