@@ -1,15 +1,30 @@
-#formulario {
-	width: 360px;
-	height: 930px;
-	margin: 100px 20px; /*localização do formulário*/
+
+#forms{
+	width: 320px;
+	background-color:#fff;
+	float:left;	
+	line-height:1; 
+	font-size:62.5%;
 }
 
-#cabecalho{
-	margin: -30px 0px; 
+#conteudo {
+	margin-left: 10px;
+    float:left;
+    width:65%;
+	height:874px;
+    background:#111;
+}
+#opcao {
+	margin-left: 10px;
+    float:right;
+    width:300px;
+	background:#fff;
+	height:874px;
+	
 }
 
-.campoTxt{
-	width: 200px;
-
+#cop {
+	clear:both;
+	padding-top:10px;
+	text-align:center;
 }
-

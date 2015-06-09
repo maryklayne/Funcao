@@ -1,0 +1,25 @@
+#put{
+  background-color: #E6FFFF;
+  border-top-style:groove;
+  border-right-style: groove;
+  border-bottom-style: groove;
+  border-left-style: groove;
+  border-width:1px;
+}
+
+
+#resultado{
+  margin-left:0px;
+  background-color: #000;
+  border-top-style: groove;
+  border-right-style: groove;
+  border-bottom-style: groove;
+  border-left-style: groove;
+  border-width:1px;
+}
+
+.dashboard-panel-6 {
+   width: 74.5%;
+}
+
+
