@@ -106,8 +106,12 @@ function grau(denominador){
 		alert("terceiro grau")
 	}else if(denominador.includes("x^2") || denominador.includes("x²") || denominador.includes("2*x") ){
 			alert("segundo grau");
-	}else if(denominador.match(/^[0-9]x/)||denominador.match(/^x[0-9]*/)){
+	}else if(denominador.match(/^x[0-9]*/)){
 		alert("primeiro grau");
+		//aceitar x+4, +x+4, -x+4, 4+x, +4+x
+		//-4+x, 1x+4, +1x+4, -1x+4, 4+1x, -4+1x
+//		4+x1, -4+x1
+		
 		
 		var reg= new RegExp(/(\+|-|\/)/);
         var entradas = denominador.split(reg);
@@ -168,10 +172,10 @@ function grau(denominador){
 		}
 		
 		//Calcular domínio
-		alert(totalA);
-		alert(totalB);
+//		alert(totalA);
+//		alert(totalB);
 		var num = (totalA/totalB)*-1;
-		alert(num);
+		alert("D(f) = {x ∈ |R / x ≠ "+num+"}");
 		
 	}	
 }
