@@ -21,6 +21,6 @@ $(function(){
 		separa = $('#funcoes div[id="' + nome + '"]').html();
 		$('#separa').empty();
 		$('#separa').append('<div>' + separa + '</div>').find('div').slideDown();
-	return false();
+	return false;
 	})
 })

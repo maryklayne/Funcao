@@ -9,15 +9,15 @@
     <link rel="stylesheet" type="text/css" href="_css/estiloMenuAbas.css" />
     <script type="text/javascript" src="_javascript/javascriptMenuAbas.min.js"></script>
     <script type="text/javascript" src="_javascript/javascriptMenuAbas.js"></script>
-    
 
     <script src="_jquery/jquery.min.js"></script> <!--ESSE ARQUIVO TEM QUE SER LOCAL!!! -->
   	<script src="_jquery/jquery2.min.js"></script><!--ESSE ARQUIVO TEM QUE SER LOCAL!!! oq eles fazem -->
     
     
 	<script src="_javascript/jquery-2.1.4.min.js"></script>
-    <script src="_javascript/funcoes.js"></script>
+    <script src="_javascript/funcoesDominio.js"></script>
 	<script src="_javascript/menu.js"></script>
+	<script src="_javascript/funcoesEixoX.js"></script>
 	
 	<link rel="stylesheet" href="_bootstrap/css/bootstrap.css"><!--Importando o Boot-->
 	
@@ -148,156 +148,76 @@
               		</div><!-- Fecha função1 -->
                     
 					<div id="funcao2">
-                    <label>Digite a função f(x):</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal1" id="ajuda1">?</button>
-                        <br>
-                        <!--<input class="campoTxt" type="text" id="ajuda1" name="ajuda1" placeholder="f(x)=ax^2+bx+c ou ax^2+bx+c">-->
+                                       	<label>Digite a função f(x):</label>
+                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal1" id="ajuda11">?</button>
                         
-                        <select class="span">
-                            <option>f(x)=ax^y + bx + c</option>
-                            <option>f(x)=ax</option>
-                            <option>f(x)=ax^y + bx</option>
-                            <option>f(x)=bx + c</option>
-                        </select>
-                        <br><br>
+                        <br>
+                        <input class="campoTxt" type="text" id="funcao1" name="funcao" placeholder="função" >
+
+                        <br>
                 
                         <label id='label'>Digite o domínio da função:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal2" id="ajuda2">?</button>
-                        <input class="campoTxt" type="text" id="dominio_funcao" name="dominio_funcao" placeholder="Domínio da função">
-                        <button class="btn-func" id="botaoDominio"> Enviar</button>
+                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal2" id="ajuda22">?</button>
+                        <input class="campoTxt" type="text" id="dominio_funcao1" name="dominio_funcao" placeholder="Domínio da função">
+                        <button class="btn-func" id="botaoDominio1"> Enviar</button>
                         <br>
                         <br>
                 
                         <label>Ponto de intersecção da curva com o eixo X :</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal3" id="ajuda3">?</button>
+                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal3" id="ajuda33">?</button>
                         <input class="campoTxt" type="text" id="itr_X" name="itr_X" readOnly="true">
-                        <button class="btn-func" id="botao1"> Enviar </button>
-                        <button class="btn-resp" id="resp1"> Mostrar resposta</button>		
+                        <button class="btn-func" id="botao11"> Enviar </button>
+                        <button class="btn-resp" id="resp11"> Mostrar resposta</button>		
                         <br>
                         <br>
                 
                         <label>Ponto de intersecção da curva com o eixo Y:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal4" id="ajuda4">?</button>
+                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal4" id="ajuda44">?</button>
                         <input class="campoTxt" type="text" id="itr_Y" name="itr_Y" readOnly="true">
-                        <button class="btn-func" id="botao2"> Enviar </button>
-                        <button class="btn-resp" id="resp2"> Mostrar resposta</button>
+                        <button class="btn-func" id="botao22"> Enviar </button>
+                        <button class="btn-resp" id="resp22"> Mostrar resposta</button>
                         <br>
                         <br>
                 
                         <label>Pontos críticos:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal5" id="ajuda5">?</button>
+                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal5" id="ajuda55">?</button>
                         <input class="campoTxt"  type="text" id="pontos_criticos" name="pontos_criticos" readOnly="true">
-                        <button class="btn-func" id="botao3"> Enviar </button>
-                        <button class="btn-resp" id="resp3"> Mostrar resposta</button>		
+                        <button class="btn-func" id="botao33"> Enviar </button>
+                        <button class="btn-resp" id="resp33"> Mostrar resposta</button>		
                         <br>
                         <br>
                 
                         <label>Máximo da função:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal6" id="ajuda6">?</button>
+                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal6" id="ajuda66">?</button>
                         <input class="campoTxt" type="text" id="maximo" name="maximo" readOnly="true">
-                        <button class="btn-func" id="botao4"> Enviar </button>
-                        <button class="btn-resp" id="resp4"> Mostrar resposta</button>		
+                        <button class="btn-func" id="botao44"> Enviar </button>
+                        <button class="btn-resp" id="resp44"> Mostrar resposta</button>		
                         <br>
                         <br>
                         
                         <label>Mínimo da função:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal7" id="ajuda7">?</button>
+                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal7" id="ajuda77">?</button>
                         <input class="campoTxt" type="text" id="minimo" name="minimo" readOnly="true">
-                        <button class="btn-func" id="botao5"> Enviar </button>
-                        <button class="btn-resp" id="resp5"> Mostrar resposta</button>		
+                        <button class="btn-func" id="botao55"> Enviar </button>
+                        <button class="btn-resp" id="resp55"> Mostrar resposta</button>		
                         <br>
                         <br>
                 
                         <label>Pontos de inflexão:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal8" id="ajuda8">?</button>
-                        <input class="campoTxt" type="text" id="pontos_de_inflexao" name="pontos_de_inflexao" pattern="[A-Za-z0-9]{6}" title="Promo codes consist of 6 alphanumeric characters." readOnly="true">
-                        <button class="btn-func" id="botao6"> Enviar </button>
-                        <button class="btn-resp" id="resp6"> Mostrar resposta</button>		
+                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal8" id="ajuda88">?</button>
+                        <input class="campoTxt" type="text" id="pontos_de_inflexao7" name="pontos_de_inflexao" pattern="[A-Za-z0-9]{6}" title="Promo codes consist of 6 alphanumeric characters." readOnly="true">
+                        <button class="btn-func" id="botao66"> Enviar </button>
+                        <button class="btn-resp" id="resp66"> Mostrar resposta</button>		
                         <br>
                         <br>   
                          
                         <label>Determine a concavidade:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal9" id="ajuda9">?</button>
-                        <input class="campoTxt" type="text" id="concavidade" name="concavidade" readOnly="true">
-                        <button class="btn-func" id="botao7"> Enviar </button>
-                        <button class="btn-resp" id="resp7"> Mostrar resposta</button>
+                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal9" id="ajuda99">?</button>
+                        <input class="campoTxt" type="text" id="concavidade7" name="concavidade" readOnly="true">
+                        <button class="btn-func" id="botao77"> Enviar </button>
                         	 
-                    </div><!-- fecha função2 -->                    
-                    <div id="funcao3"><label>Digite a função f(x):</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal1" id="ajuda1">?</button>
-                        <br>
-                        <!--<input class="campoTxt" type="text" id="ajuda1" name="ajuda1" placeholder="f(x)=ax^2+bx+c ou ax^2+bx+c">-->
-                        
-                        <select class="span">
-                            <option>f(x)=ax^y + bx + c</option>
-                            <option>f(x)=ax</option>
-                            <option>f(x)=ax^y + bx</option>
-                            <option>f(x)=bx + c</option>
-                        </select>
-                        <br><br>
-                
-                        <label id='label'>Digite o domínio da função:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal2" id="ajuda2">?</button>
-                        <input class="campoTxt" type="text" id="dominio_funcao" name="dominio_funcao" placeholder="Domínio da função">
-                        <button class="btn-func" id="botaoDominio"> Enviar</button>
-                        <br>
-                        <br>
-                
-                        <label>Ponto de intersecção da curva com o eixo X :</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal3" id="ajuda3">?</button>
-                        <input class="campoTxt" type="text" id="itr_X" name="itr_X" readOnly="true">
-                        <button class="btn-func" id="botao1"> Enviar </button>
-                        <button class="btn-resp" id="resp1"> Mostrar resposta</button>		
-                        <br>
-                        <br>
-                
-                        <label>Ponto de intersecção da curva com o eixo Y:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal4" id="ajuda4">?</button>
-                        <input class="campoTxt" type="text" id="itr_Y" name="itr_Y" readOnly="true">
-                        <button class="btn-func" id="botao2"> Enviar </button>
-                        <button class="btn-resp" id="resp2"> Mostrar resposta</button>
-                        <br>
-                        <br>
-                
-                        <label>Pontos críticos:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal5" id="ajuda5">?</button>
-                        <input class="campoTxt"  type="text" id="pontos_criticos" name="pontos_criticos" readOnly="true">
-                        <button class="btn-func" id="botao3"> Enviar </button>
-                        <button class="btn-resp" id="resp3"> Mostrar resposta</button>		
-                        <br>
-                        <br>
-                
-                        <label>Máximo da função:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal6" id="ajuda6">?</button>
-                        <input class="campoTxt" type="text" id="maximo" name="maximo" readOnly="true">
-                        <button class="btn-func" id="botao4"> Enviar </button>
-                        <button class="btn-resp" id="resp4"> Mostrar resposta</button>		
-                        <br>
-                        <br>
-                        
-                        <label>Mínimo da função:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal7" id="ajuda7">?</button>
-                        <input class="campoTxt" type="text" id="minimo" name="minimo" readOnly="true">
-                        <button class="btn-func" id="botao5"> Enviar </button>
-                        <button class="btn-resp" id="resp5"> Mostrar resposta</button>		
-                        <br>
-                        <br>
-                
-                        <label>Pontos de inflexão:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal8" id="ajuda8">?</button>
-                        <input class="campoTxt" type="text" id="pontos_de_inflexao" name="pontos_de_inflexao" pattern="[A-Za-z0-9]{6}" title="Promo codes consist of 6 alphanumeric characters." readOnly="true">
-                        <button class="btn-func" id="botao6"> Enviar </button>
-                        <button class="btn-resp" id="resp6"> Mostrar resposta</button>		
-                        <br>
-                        <br>   
-                         
-                        <label>Determine a concavidade:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal9" id="ajuda9">?</button>
-                        <input class="campoTxt" type="text" id="concavidade" name="concavidade" readOnly="true">
-                        <button class="btn-func" id="botao7"> Enviar </button>
-                        <button class="btn-resp" id="resp7"> Mostrar resposta</button>
-                        	
-                    </div><!--  fecha função3 -->
+                </div><!-- fecha função2 -->                    
+
                     
                 </div> <!-- fecha a div funcoes-->
                 
