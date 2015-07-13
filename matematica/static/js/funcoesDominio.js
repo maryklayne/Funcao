@@ -1,4 +1,3 @@
-
 //function enviarFuncao(valor){
 //	if (valor=="botaoDominio"){
 //		$("#itr_X").prop('readOnly',false).focus();
@@ -83,22 +82,22 @@ $(document).ready(function(){
     $('#botaoEnviarFuncao').click(function(){
     	var url = $(this).data('url')
     	var token = $(this).data('token')
-    	enviarDado('#funcao',url, token);
+    	enviarDado('#funcao','#intervalo',url, token);
     	
     });
 });
 
 
-function enviarDado(id_txt, url, token){
+function enviarDado(id_txt, id_txt2, url, token){
       
             var texto = $(id_txt).val();
-
+            var texto2 = $(id_txt2).val();
 
 
             var $request=$.ajax({
 				    method: "POST",
 				    url: url,
-				    data: {csrfmiddlewaretoken:token,funcao:texto},
+				    data: {csrfmiddlewaretoken:token,funcao:texto, intervalo:texto2},
                     mimeType:"JSON"
 			});
 
