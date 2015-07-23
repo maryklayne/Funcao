@@ -36,6 +36,7 @@
 
 <body>
 
+
 	<div class="container-fluid">	
 
 		<nav class="navbar navbar-default navbar-fixed-top"> <!--cabeçalho-->
@@ -82,13 +83,12 @@
 						
                         <br>
                         <input class="campoTxt" type="text" id="funcao" name="funcao" placeholder="função" >
-                        <button class="btn-func" id="botaoEnviarFuncao" data-token="{{csrf_token}}" data-url="{% url 'funcao1' %}"> Enviar</button>
                         <br>
                 
-                        <label id='label'>Digite o domínio da função:</label>
+                        <label id='label'>Digite o Intervalo da função:</label>
                         <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal2" id="ajuda2">?</button>
-                        <input class="campoTxt" type="text" id="dominio_funcao" name="dominio_funcao" placeholder="Domínio da função">
-                        <button class="btn-func" id="botaoDominio"> Enviar</button>
+                        <input class="intervalo" type="text" id="intervalo" name="intervalo" placeholder="intervalo" >
+                       	<button class="btn-func" id="botaoEnviarFuncao" data-token="{{csrf_token}}" data-url="{% url 'funcao1' %}"> Enviar</button>
                         <br>
                         <br>
                 
@@ -99,7 +99,8 @@
                         <button class="btn-resp" id="resp1"> Mostrar resposta</button>		
                         <br>
                         <br>
-                
+                        
+                        
                         <label>Ponto de intersecção da curva com o eixo Y:</label>
                         <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal4" id="ajuda4">?</button>
                         <input class="campoTxt" type="text" id="itr_Y" name="itr_Y" readOnly="true">
@@ -149,7 +150,7 @@
               		</div><!-- Fecha função1 -->
                     
 					<div id="funcao2">
-                                       	<label>Digite a função f(x):</label>
+                        <label>Digite a função f(x):</label>
                         <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal1" id="ajuda11">?</button>
                         
                         <br>
@@ -157,9 +158,9 @@
 
                         <br>
                 
-                        <label id='label'>Digite o domínio da função:</label>
+                        <label id='label'>Digite o a função:</label>
                         <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal2" id="ajuda22">?</button>
-                        <input class="campoTxt" type="text" id="dominio_funcao1" name="dominio_funcao" placeholder="Domínio da função">
+                        <input class="campoTxt" type="text" id="Intervalo" name="dominio_funcao" placeholder="Intervalo da função">
                         <button class="btn-func" id="botaoDominio1"> Enviar</button>
                         <br>
                         <br>
