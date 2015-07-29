@@ -32,7 +32,7 @@ def funcao1(request):  #num/sqrt(deno)+gfdgf
 	tipo = escolheTipo(campo1)
 	
 	#Calcular Dominio
-	#print calcularDominio(campo1, tipo)	
+	print calcularDominio(campo1, tipo)	
 
 	#Definir intervalo de valores de X
 	intervalo = calcIntervalo(campo2)
@@ -68,6 +68,7 @@ def funcao1(request):  #num/sqrt(deno)+gfdgf
 		
 def IntersecX(funcao):
 	res = solve(funcao, x)
+	print res
 	if len(res)==1:
 		res = round(float(res[0]),2)
 		res = (res, 0.0)
@@ -81,7 +82,6 @@ def IntersecX(funcao):
 		res2 = round(float(res[1]),2)
 		res3 = round(float(res[2]),2)
 		res = (res1,res2,res3)	
-		
 	if res == -0.0:
 		res = 0.0	
 		
