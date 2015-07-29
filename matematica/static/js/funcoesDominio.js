@@ -1,3 +1,4 @@
+var mensagem = ''
 //function enviarFuncao(valor){
 //	if (valor=="botaoDominio"){
 //		$("#itr_X").prop('readOnly',false).focus();
@@ -55,36 +56,95 @@
 //	}
 //}
 
+	
+function esconder(){
+	//esconder botões
+	for (var i = 3; i <= 9; i++) {
+	    var variavel = '#ajuda'+ i;
+	    $(variavel).toggle();
+	    var resp = i-2;
+	    $('#resp'+resp).toggle();  
+	    $('#botao'+resp).toggle();
+	    $('#desistir'+resp).toggle();
+	}
+}	
+	
 
 $(document).ready(function(){
-	//esconder botões de ajuda
-//	for (var i = 3; i <= 9; i++) {
-//	    var variavel = '#ajuda'+ i;
-//	    $(variavel).toggle();
-//	    var resp = i-2;
-//	    $('#resp'+resp).toggle();  
-//	    $('#botao'+resp).toggle();
-//	}
-//	
-//	$('.campoTxt').keypress(function(event) {
-//		var valor = $(this).next().attr('id');
-//		if (event.keyCode == '13') {
-//			event.preventDefault();
-//			enviarFuncao(valor);
-//			if(valor != 'label' && valor != "botaoDominio"){
-//				$(this).next().show();
-//			}
-//		}
-//	});
-	
-	
-	
+
+	esconder();
+
     $('#botaoEnviarFuncao').click(function(){
+    	
     	var url = $(this).data('url')
     	var token = $(this).data('token')
     	enviarDado('#funcao','#intervalo',url, token);
-    	
+    	$('#botao1').show();
+    	$('#desistir1').show();
+    	$("#itr_X").prop('readOnly',false).focus();
+    	$("#ajuda3").show();
     });
+    
+    
+    $('.btn-func').click(function(){
+    	var id = $(this).attr('id');
+    	var valor = $(this).prev().val();
+
+    	if (id != 'botaoEnviarFuncao'){
+    		alert(valor)	
+    	}	
+    });
+    
+    
+    $('.btn-des').click(function(){
+    	var resp = '';
+    	var id = $(this).attr('id');
+    	var anterior = $(this).prev().prev().val();
+    	var cAnterior = $(this).prev().prev();
+    	var cProx = '';
+    	var num = 0;
+    	
+    	if (id == 'desistir1'){
+    		resp = $.parseJSON(mensagem).IntersecX;
+    		cProx = '#botao2';
+    		num = 4;
+    			
+    	}else if (id == 'desistir2'){
+    		resp = $.parseJSON(mensagem).IntersecY;
+    		cProx = '#botao3';
+    		num = 5;	
+    			
+    	}else if (id == 'desistir3'){
+    		resp = $.parseJSON(mensagem).ptnCritico;
+    		cProx = '#botao4';
+    		num = 6;	
+    		
+    	}else if (id == 'desistir4'){
+    		resp = $.parseJSON(mensagem).max;
+    		cProx = '#botao5';
+    		num = 7;	
+    		
+    	}else if (id == 'desistir5'){
+    		resp = $.parseJSON(mensagem).min;
+    		cProx = '#botao6';
+    		num = 8;
+    		
+    	}
+    	ant = num-1;
+    	$('#ajuda'+ant).toggle();
+    	$('#ajuda'+num).show();
+    	$(cAnterior).val(resp);
+    	$(cAnterior).attr("disabled", true);
+    	$(this).toggle();	
+		$(this).prev().toggle();
+
+		$(cProx).show();
+		$(cProx).next().show();
+
+    });  
+    
+    
+    
 });
 
 
@@ -102,8 +162,13 @@ function enviarDado(id_txt, id_txt2, url, token){
 			});
 
             $request.success(function (msg) {
-            				
-                           alert($.parseJSON(msg).limite);
+            				mensagem = msg
+                           alert('IntersecX '+ $.parseJSON(msg).IntersecX + '\nIntersecY '+ $.parseJSON(msg).IntersecY
+                        		   + '\nPontos criticos '+$.parseJSON(msg).ptnCritico
+                        		   + '\nPonto max '+$.parseJSON(msg).max
+                        		   + '\nPonto min '+$.parseJSON(msg).min
+                        		   );
+                         
                         });
 
             $request.fail(function( jqXHR, textStatus ) {
