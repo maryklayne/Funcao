@@ -54,7 +54,7 @@ def funcao1(request):  #num/sqrt(deno)+gfdgf
 	raizesDaDerivada = pontosCritico(campo1, funcaoUnicode)
 
 	#Maximo e Minimo
-	maxAndMin = ptMaxAndMin(campo1, raizesDaDerivada, intervalo)
+	maxAndMin = ptMaxAndMin(campo1,intervalo)
 	print maxAndMin
 
 	dados = json.dumps({'IntersecX':str(intx), 'IntersecY':str(inty),
@@ -140,39 +140,78 @@ def calcLimitesDaFuncao(resultadoDafuncao, funcaoUnicode, valor):
 #	if (lim1 == lim2):
 #		print lim1
 #	print 'nao existe assintota horizontal'
-	
+
+def calcPont(funcao, lista):
+	i=0
+	pontosY = lista
+	while i < len(lista):
+		pontosY[i] = funcao.subs(x,lista[i])
+		i=i+1
+	print 'pontos ',  pontosY
+	return pontosY
+
 def pontosCritico(funcao, funcaoUnicode):
 	dx = calcDerivada(funcao) #1ª derivada
 	dx = ratsimp(dx)
 	print '1ª derivada de f(x) ',dx
-	resultado = calcDerivada2(dx) #1ª derivada = 0 
+	resultado = calcDerivada2(dx) #1ª derivada = 0
 #	final = subResultNaFuncao(funcaoUnicode, resultado) #corrigir
 	#calcLimitesDaFuncao(final, funcao, inter)#corrigir
 	print '1ª derivada == 0 ', resultado
-	return resultado
-
-def ptMaxAndMin(funcao, resultDa1aDerivada, intervalo):
-	resp = []
+	eixoY = calcPont(funcao,resultado)
+	eixoX = calcDerivada2(dx) #1ª derivada = 0
+	print 'eixoX', eixoX
+	print 'eixoY', eixoY
+	retorno = eixoX
 	i = 0
-	while i < len(resultDa1aDerivada):
-		funcao = funcao.subs(x, c)
-		i+=1
-	print funcao	
-	print 'substituir c por valor da derivada == 0 ',funcao
-	
-	i = 0 
-	while i < len(resultDa1aDerivada):
-		if (resultDa1aDerivada[i] >= sympify(intervalo[0])) or (resultDa1aDerivada[i] <= intervalo[1]):
-			resp.append(funcao.subs(c, resultDa1aDerivada[i]))
-		i+=1
-	
-	resp.append(funcao.subs(c, intervalo[0])) #f inicio
-	resp.append(funcao.subs(c, intervalo[1])) #f fim
-	
-	mini = min(resp)
-	maxi = max(resp)
+	while i < len(eixoX):
+		retorno[i] = [eixoX[i],eixoY[i]]
+		i=i+1
+	print 'retorno ', retorno
+	return retorno
 
-	return [mini, maxi] 
+#def verificarMaxAndMin():
+
+
+def ptMaxAndMin(funcao, intervalo):
+	dx = calcDerivada(funcao)
+	dx2 = calcDerivada(dx)
+	resultado = []
+	raizes = calcDerivada2(dx) #1ª derivada = 0
+
+	i = 0
+	while i < len(raizes):
+		calc = dx2.subs(x,raizes[0])
+		lista = [raizes[0],calc]
+		resultado.append(lista)
+		i=i+1
+	print resultado
+
+
+
+
+
+	# resp = []
+	# i = 0
+	# while i < len(resultDa1aDerivada):
+	# 	funcao = funcao.subs(x, c)
+	# 	i+=1
+	# print funcao
+	# print 'substituir c por valor da derivada == 0 ',funcao
+	#
+	# i = 0
+	# while i < len(resultDa1aDerivada):
+	# 	if (resultDa1aDerivada[i] >= sympify(intervalo[0])) or (resultDa1aDerivada[i] <= intervalo[1]):
+	# 		resp.append(funcao.subs(c, resultDa1aDerivada[i]))
+	# 	i+=1
+	#
+	# resp.append(funcao.subs(c, intervalo[0])) #f inicio
+	# resp.append(funcao.subs(c, intervalo[1])) #f fim
+	#
+	# mini = min(resp)
+	# maxi = max(resp)
+
+	return [mini, maxi]
 	
 	
 	
