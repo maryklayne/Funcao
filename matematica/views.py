@@ -170,49 +170,56 @@ def pontosCritico(funcao, funcaoUnicode):
 	print 'retorno ', retorno
 	return retorno
 
-#def verificarMaxAndMin():
-
-
 def ptMaxAndMin(funcao, intervalo):
+	minimos = []
+	maximos = []
+	psCriticos = []
 	dx = calcDerivada(funcao)
 	dx2 = calcDerivada(dx)
-	resultado = []
+	print 'segudna derivada ', dx2
 	raizes = calcDerivada2(dx) #1ª derivada = 0
+	resultado = []
 
 	i = 0
 	while i < len(raizes):
-		calc = dx2.subs(x,raizes[0])
-		lista = [raizes[0],calc]
+		print 'raize ', raizes[i]
+		calc = dx2.subs(x,raizes[i])
+		print calc
+		lista = [raizes[i],calc]
 		resultado.append(lista)
 		i=i+1
-	print resultado
+	print 'lista dos resultados ',resultado
+
+	#Separar Mins de Maxs e Ptn Criticos
+	i=0
+	while i <len(resultado):
+		print resultado[i][0]
+		if resultado[i][0]>0:
+			minimos.append(resultado[i][0])
+		elif resultado[i][0]<0:
+			maximos.append(resultado[i][0])
+		#else:
+		#	psCriticos.append(resultado[i][0])
+		i=i+1
+
+	print 'pontos minimos ', minimos
+	print 'pontos maximos ', maximos
+	#print 'pontos critico ', psCriticos
+
+	minimosPar = []
+	maximosPar = []
+#	psCriticos = []
 
 
+	#calcularCoordenadasYs
+	for i in range(len(minimos)):
+		minimosPar.append((minimos[i], funcao.subs(x,minimos[i])))
 
+	for i in range(len(maximos)):
+		maximosPar.append((maximos[i], funcao.subs(x,maximos[i])))
 
+	return [minimosPar, maximos]
 
-	# resp = []
-	# i = 0
-	# while i < len(resultDa1aDerivada):
-	# 	funcao = funcao.subs(x, c)
-	# 	i+=1
-	# print funcao
-	# print 'substituir c por valor da derivada == 0 ',funcao
-	#
-	# i = 0
-	# while i < len(resultDa1aDerivada):
-	# 	if (resultDa1aDerivada[i] >= sympify(intervalo[0])) or (resultDa1aDerivada[i] <= intervalo[1]):
-	# 		resp.append(funcao.subs(c, resultDa1aDerivada[i]))
-	# 	i+=1
-	#
-	# resp.append(funcao.subs(c, intervalo[0])) #f inicio
-	# resp.append(funcao.subs(c, intervalo[1])) #f fim
-	#
-	# mini = min(resp)
-	# maxi = max(resp)
-
-	return [mini, maxi]
-	
 	
 	
 	
