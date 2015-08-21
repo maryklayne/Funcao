@@ -1,149 +1,202 @@
 var mensagem = ''
-//function enviarFuncao(valor){
-//	if (valor=="botaoDominio"){
-//		$("#itr_X").prop('readOnly',false).focus();
-//		$("#botao1").show();
-//		$("#ajuda3").show();
-//		$("#resp1").show();
-//		verificaDominio(document.getElementById("funcao").value);
-//	}else if(valor=="botao1"){
-//		$("#itr_Y").prop('readOnly',false).focus();
-//		$("#botao2").show();
-//		$("#ajuda3").toggle();
-//		$("#ajuda4").show();
-//		$("#resp1").toggle();
-//		$("#resp2").show();
-//	}else if(valor=="botao2"){
-//		$("#pontos_criticos").prop('readOnly',false).focus();
-//		$("#botao3").show();
-//		$("#ajuda4").toggle();
-//		$("#ajuda5").show();
-//		$("#resp2").toggle();		
-//		$("#resp3").show();
-//		
-//	}else if(valor=="botao3"){
-//		$("#maximo").prop('readOnly',false).focus();
-//		$("#botao4").show();
-//		$("#ajuda5").toggle();
-//		$("#ajuda6").show();
-//		$("#resp3").toggle();		
-//		$("#resp4").show();	
-//		
-//	}else if(valor=="botao4"){
-//		$("#minimo").prop('readOnly',false).focus();
-//		$("#botao5").show();
-//		$("#ajuda6").toggle();
-//		$("#ajuda7").show();
-//		$("#resp4").toggle();		
-//		$("#resp5").show();
-//	}else if(valor=="botao5"){
-//		$("#pontos_de_inflexao").prop('readOnly',false).focus();
-//		$("#botao6").show();
-//		$("#ajuda7").toggle();
-//		$("#ajuda8").show();
-//		$("#resp5").toggle();		
-//		$("#resp6").show();
-//	}else if(valor=="botao6"){
-//		$("#concavidade").prop('readOnly',false).focus();
-//		$("#botao7").show();
-//		$("#ajuda8").toggle();
-//		$("#ajuda9").show();
-//		$("#resp6").toggle();		
-//		$("#resp7").show();
-//	}else if(valor=='botao7'){
-//		$("#ajuda9").toggle();
-//		$("#resp7").toggle();	
-//	}
-//}
 
-	
+
 function esconder(){
 	//esconder botões
-	for (var i = 3; i <= 9; i++) {
+	for (var i = 3; i <= 12; i++) {
 	    var variavel = '#ajuda'+ i;
 	    $(variavel).toggle();
 	    var resp = i-2;
 	    $('#resp'+resp).toggle();  
 	    $('#botao'+resp).toggle();
 	    $('#desistir'+resp).toggle();
+		//$('#campo'+resp).prop('readOnly',false);
 	}
 }	
 	
 
 $(document).ready(function(){
-
+	id = ''
 	esconder();
 
     $('#botaoEnviarFuncao').click(function(){
-    	
+
     	var url = $(this).data('url')
     	var token = $(this).data('token')
     	enviarDado('#funcao','#intervalo',url, token);
     	$('#botao1').show();
     	$('#desistir1').show();
-    	$("#itr_X").prop('readOnly',false).focus();
+    	$("#campo3").prop('disabled',false).focus();
     	$("#ajuda3").show();
     });
     
-    
+    //x**3-3*x**2-9*x+7
+//	IntersecX (1 + (-1/2 - sqrt(3)*I/2)*(2 + 2*sqrt(15)*I)**(1/3) + 4/((-1/2 - sqrt(3)*I/2)*(2 + 2*sqrt(15)*I)**(1/3)), 1 + 4/((-1/2 + sqrt(3)*I/2)*(2 + 2*sqrt(15)*I)**(1/3)) + (-1/2 + sqrt(3)*I/2)*(2 + 2*sqrt(15)*I)**(1/3), 1 + 4/(2 + 2*sqrt(15)*I)**(1/3) + (2 + 2*sqrt(15)*I)**(1/3))
+//IntersecY (0.0, 7.0)
+//Pontos criticos (-1, 12), (3, -20)
+//Ponto max (-1, -12)
+//Ponto min (3, 12)
+//Ponto infl (1, -4)
+
+
+
     $('.btn-func').click(function(){
-    	var id = $(this).attr('id');
+    	id = $(this).attr('id');
     	var valor = $(this).prev().val();
 
-    	if (id != 'botaoEnviarFuncao'){
-    		alert(valor)	
-    	}	
+    	if (id == 'botao1'){
+			if (valor==$.parseJSON(mensagem).IntersecX) {
+				$(this).prev().attr("disabled", true);
+				$(this).toggle();
+				$(this).next().toggle();
+				$(this).prev().prev().toggle();
+
+				//proximo
+				$('#ajuda4').show();
+				$('#botao2').next().show();
+				$('#botao2').show();
+				$('#botao2').prev().attr('disabled',false);
+			}
+    	}else if (id == 'botao2'){
+			if (valor==$.parseJSON(mensagem).IntersecY) {
+				$(this).prev().attr("disabled", true);
+				$(this).toggle();
+				$(this).next().toggle();
+				$(this).prev().prev().toggle();
+
+				//proximo
+				$('#ajuda5').show();
+				$('#botao3').next().show();
+				$('#botao3').show();
+				$('#botao3').prev().attr('disabled',false);
+			}
+    	}else if (id == 'botao3') {
+			if (valor == $.parseJSON(mensagem).ptnCritico) {
+				$(this).prev().attr("disabled", true);
+				$(this).toggle();
+				$(this).next().toggle();
+				$(this).prev().prev().toggle();
+
+				//proximo
+				$('#ajuda6').show();
+				$('#botao4').next().show();
+				$('#botao4').show();
+				$('#botao4').prev().attr('disabled', false);
+			}
+		}else if (id == 'botao4') {
+			if (valor == $.parseJSON(mensagem).max) {
+				$(this).prev().attr("disabled", true);
+				$(this).toggle();
+				$(this).next().toggle();
+				$(this).prev().prev().toggle();
+
+				//proximo
+				$('#ajuda7').show();
+				$('#botao5').next().show();
+				$('#botao5').show();
+				$('#botao5').prev().attr('disabled', false);
+			}
+		}else if (id == 'botao5') {
+			if (valor == $.parseJSON(mensagem).min) {
+				$(this).prev().attr("disabled", true);
+				$(this).toggle();
+				$(this).next().toggle();
+				$(this).prev().prev().toggle();
+
+				//proximo
+				$('#ajuda8').show();
+				$('#botao6').next().show();
+				$('#botao6').show();
+				$('#botao6').prev().attr('disabled', false);
+			}
+		}else if (id == 'botao6') {
+			if (valor == $.parseJSON(mensagem).pontInfl) {
+				$(this).prev().attr("disabled", true);
+				$(this).toggle();
+				$(this).next().toggle();
+				$(this).prev().prev().toggle();
+
+				//proximo
+				$('#ajuda9').show();
+				$('#botao7').next().show();
+				$('#botao7').show();
+				$('#botao7').prev().attr('disabled', false);
+			}
+		}
+
+
+
+
+
     });
-    
-    
+
+
+
+
+
     $('.btn-des').click(function(){
     	var resp = '';
-    	var id = $(this).attr('id');
+    	id = $(this).attr('id');
     	var anterior = $(this).prev().prev().val();
     	var cAnterior = $(this).prev().prev();
     	var cProx = '';
     	var num = 0;
-    	
+
     	if (id == 'desistir1'){
     		resp = $.parseJSON(mensagem).IntersecX;
     		cProx = '#botao2';
     		num = 4;
-    			
+
     	}else if (id == 'desistir2'){
     		resp = $.parseJSON(mensagem).IntersecY;
     		cProx = '#botao3';
-    		num = 5;	
-    			
-    	}else if (id == 'desistir3'){
-    		resp = $.parseJSON(mensagem).ptnCritico;
-    		cProx = '#botao4';
-    		num = 6;	
-    		
-    	}else if (id == 'desistir4'){
-    		resp = $.parseJSON(mensagem).max;
-    		cProx = '#botao5';
-    		num = 7;	
-    		
+    		num = 5;
+
+    	}else if (id == 'desistir3') {
+			resp = $.parseJSON(mensagem).ptnCritico;
+			cProx = '#botao4';
+			num = 6;
+
+    	}else if (id == 'desistir4') {
+			resp = $.parseJSON(mensagem).max;
+			cProx = '#botao5';
+			num = 7;
+
     	}else if (id == 'desistir5'){
     		resp = $.parseJSON(mensagem).min;
     		cProx = '#botao6';
     		num = 8;
-    		
+
+    	}else if (id == 'desistir6'){
+    		resp = $.parseJSON(mensagem).pontInfl;
+    		cProx = '#botao7';
+    		num = 9;
+
+    	}else if (id == 'desistir7'){
+    		resp = $.parseJSON(mensagem).pontInfl;
+    		cProx = '#botao8';
+    		num = 10;
+
+    	}else if (id == 'desistir8'){
+    		resp = $.parseJSON(mensagem).pontInfl;
+    		cProx = '#botao9';
+    		num = 11;
+
     	}
+
     	ant = num-1;
     	$('#ajuda'+ant).toggle();
     	$('#ajuda'+num).show();
     	$(cAnterior).val(resp);
     	$(cAnterior).attr("disabled", true);
-    	$(this).toggle();	
+    	$(this).toggle();
 		$(this).prev().toggle();
 
 		$(cProx).show();
 		$(cProx).next().show();
 
-    });  
-    
-    
+    });
+
     
 });
 
@@ -167,6 +220,7 @@ function enviarDado(id_txt, id_txt2, url, token){
                         		   + '\nPontos criticos '+$.parseJSON(msg).ptnCritico
                         		   + '\nPonto max '+$.parseJSON(msg).max
                         		   + '\nPonto min '+$.parseJSON(msg).min
+							       + '\nPonto infl '+$.parseJSON(msg).pontInfl
                         		   );
                          
                         });

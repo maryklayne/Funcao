@@ -6,7 +6,6 @@ import json
 import re
 from sympy import *
 
-
 x = Symbol('x')
 y = Symbol('y')
 z = Symbol('z')
@@ -32,7 +31,7 @@ def funcao1(request):  #num/sqrt(deno)+gfdgf
 	tipo = escolheTipo(campo1)
 	
 	#Calcular Dominio
-	print calcularDominio(campo1, tipo)	
+#	print calcularDominio(campo1, tipo)
 
 	#Definir intervalo de valores de X
 	intervalo = calcIntervalo(campo2)
@@ -40,25 +39,25 @@ def funcao1(request):  #num/sqrt(deno)+gfdgf
 	
 	#IntersecX
 	intx = IntersecX(campo1)
-	print 'IntersecX ', intx
 
 	#IntersecY
 	inty = IntersecY(campo1)
-	print 'IntersecY ', inty
 
 	#converter de unicode para sympify
 	campo1 = sympify(campo1) 
 	funcaoUnicode = sympify(campo1) 
 
 	#Pontos Crítico
-	raizesDaDerivada = pontosCritico(campo1, funcaoUnicode)
+	raizesDaDerivada = str(pontosCritico(campo1, funcaoUnicode))
 
 	#Maximo e Minimo
 	maxAndMin = ptMaxAndMin(campo1,intervalo)
-	print maxAndMin
+
+	#Pont de Inflexao
+	pontInflx = pontInflexao(campo1)
 
 	dados = json.dumps({'IntersecX':str(intx), 'IntersecY':str(inty),
-	'ptnCritico': str(raizesDaDerivada),'min':str(maxAndMin[0]),'max':str(maxAndMin[1])})
+	'ptnCritico': raizesDaDerivada[1:-1],'min':str(maxAndMin[0][0]),'max':str(maxAndMin[1][0]), 'pontInfl':str(pontInflx[0])})
 
 	return HttpResponse(dados, content_type='application/json') #retornar lista
 
@@ -68,23 +67,33 @@ def funcao1(request):  #num/sqrt(deno)+gfdgf
 		
 def IntersecX(funcao):
 	res = solve(funcao, x)
-	print res
+
 	if len(res)==1:
-		res = round(float(res[0]),2)
+		try:
+			res = round(float(res[0]),2)
+		except:
+			res=res[0]
 		res = (res, 0.0)
 	elif len(res)==2:
-		res1 = round(float(res[0]),2)
-		res2 = round(float(res[1]),2)
+		try:
+			res1 = round(float(res[0]),2)
+			res2 = round(float(res[1]),2)
+		except:
+			res1 = res[0]
+			res2 = res[1]
 		res = (res1,res2)
-	else:
-		print (res)
-		res1 = round(float(res[0]),2)
-		res2 = round(float(res[1]),2)
-		res3 = round(float(res[2]),2)
+	elif len(res)==3:
+		try:
+			res1 = round(float(res[0]),2)
+			res2 = round(float(res[1]),2)
+			res3 = round(float(res[2]),2)
+		except:
+			res1 = res[0]
+			res2 = res[1]
+			res3 = res[2]
 		res = (res1,res2,res3)	
 	if res == -0.0:
-		res = 0.0	
-		
+		res = 0.0
 	return res
 	
 def IntersecY(funcao):
@@ -92,7 +101,7 @@ def IntersecY(funcao):
 	res = round(float(res(0)),2)
 	if res == -0.0:
 		res = 0.0
-	return 0.0 , res
+	return 0.0,res
 	
 def calcIntervalo(valor):
 	valor = valor.replace('(','')
@@ -125,21 +134,6 @@ def calcLimitesDaFuncao(resultadoDafuncao, funcaoUnicode, valor):
 
 	return temp
 
-#def parOuImpar(funcao):
-
-#def asssintotaV(funcao, dominio):
-#	limE = limit(funcao,x,dominio,'-')
-#	limD = limit(funcao,x,dominio,'+')
-#	if ((limE == oo and limD == -oo) or (limE == -oo and limD == oo))
-#		print 'assintota vertical', # resp (dominio, 0)
-#	print 'sem assintota vertical'
-
-#def asssintotaH(funcao):
-#	lim1 = limit(funcao,x,oo)
-#	lim2 = limit(funcao,x,-oo)
-#	if (lim1 == lim2):
-#		print lim1
-#	print 'nao existe assintota horizontal'
 
 def calcPont(funcao, lista):
 	i=0
@@ -147,11 +141,13 @@ def calcPont(funcao, lista):
 	while i < len(lista):
 		pontosY[i] = funcao.subs(x,lista[i])
 		i=i+1
-	print 'pontos ',  pontosY
+#	print 'pontos ',  pontosY
 	return pontosY
 
 def pontosCritico(funcao, funcaoUnicode):
 	dx = calcDerivada(funcao) #1ª derivada
+#	print 'funcao ', funcao
+#	print 'derivada ', dx
 	dx = ratsimp(dx)
 	print '1ª derivada de f(x) ',dx
 	resultado = calcDerivada2(dx) #1ª derivada = 0
@@ -160,14 +156,14 @@ def pontosCritico(funcao, funcaoUnicode):
 	print '1ª derivada == 0 ', resultado
 	eixoY = calcPont(funcao,resultado)
 	eixoX = calcDerivada2(dx) #1ª derivada = 0
-	print 'eixoX', eixoX
-	print 'eixoY', eixoY
+#	print 'eixoX', eixoX
+#	print 'eixoY', eixoY
 	retorno = eixoX
 	i = 0
 	while i < len(eixoX):
-		retorno[i] = [eixoX[i],eixoY[i]]
+		retorno[i] = (eixoX[i],eixoY[i])
 		i=i+1
-	print 'retorno ', retorno
+	#print 'retorno ', retorno
 	return retorno
 
 def ptMaxAndMin(funcao, intervalo):
@@ -182,61 +178,72 @@ def ptMaxAndMin(funcao, intervalo):
 
 	i = 0
 	while i < len(raizes):
-		print 'raize ', raizes[i]
+	#	print 'raize ', raizes[i]
 		calc = dx2.subs(x,raizes[i])
-		print calc
+		#print calc
 		lista = [raizes[i],calc]
 		resultado.append(lista)
 		i=i+1
-	print 'lista dos resultados ',resultado
+	#print 'lista dos resultados ',resultado
 
 	#Separar Mins de Maxs e Ptn Criticos
 	i=0
 	while i <len(resultado):
-		print resultado[i][0]
+	#	print resultado[i][0]
 		if resultado[i][0]>0:
-			minimos.append(resultado[i][0])
+			minimos.append(tuple(resultado[i]))
 		elif resultado[i][0]<0:
-			maximos.append(resultado[i][0])
+			maximos.append(tuple(resultado[i]))
 		#else:
 		#	psCriticos.append(resultado[i][0])
 		i=i+1
+
 
 	print 'pontos minimos ', minimos
 	print 'pontos maximos ', maximos
 	#print 'pontos critico ', psCriticos
 
-	minimosPar = []
-	maximosPar = []
-#	psCriticos = []
+# 	minimosPar = []
+# 	maximosPar = []
+# #	psCriticos = []
+#
+#
+# 	#calcularCoordenadasYs
+# 	for i in range(len(minimos)):
+# 		minimosPar.append((minimos[i], funcao.subs(x,minimos[i])))
+#
+# 	for i in range(len(maximos)):
+# 		maximosPar.append((maximos[i], funcao.subs(x,maximos[i])))
 
+	return [minimos, maximos]
 
-	#calcularCoordenadasYs
-	for i in range(len(minimos)):
-		minimosPar.append((minimos[i], funcao.subs(x,minimos[i])))
+def pontInflexao(funcao):
+	resultado = []
+	dx = calcDerivada(funcao)
+	dx2 = calcDerivada(dx)
+	res = solve(dx2,x)
 
-	for i in range(len(maximos)):
-		maximosPar.append((maximos[i], funcao.subs(x,maximos[i])))
+	for i in range(len(res)):
+		resultado.append((res[i],funcao.subs(x, res[i])))
 
-	return [minimosPar, maximos]
+	return resultado
+#def parOuImpar(funcao):
 
+# def asssintotaV(funcao, dominio):
+# 	limE = limit(funcao,x,dominio,'-')
+# 	limD = limit(funcao,x,dominio,'+')
+# 	if ((limE == oo and limD == -oo) or (limE == -oo and limD == oo))
+# 		print 'assintota vertical', # resp (dominio, 0)
+# 	print 'sem assintota vertical'
+
+#def asssintotaH(funcao):
+#	lim1 = limit(funcao,x,oo)
+#	lim2 = limit(funcao,x,-oo)
+#	if (lim1 == lim2):
+#		print lim1
+#	print 'nao existe assintota horizontal'
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 def raiz(funcao):
 
 	funcao = sympify(funcao[5:-1])
@@ -270,13 +277,7 @@ def calcularDominio(funcao, tipo):
 #	if (tipo==6):
 #		print "numerador e denominador raiz"
 	
-	
-	
-	
-	
-	
-	
-	
+
 def temDenominador(funcao): #verificar se tem denominador
 	if(funcao.count("/")==0):
 		return false

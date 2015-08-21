@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40eb916f-d25f-4536-9342-f06b5668e1a1" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/matematica/static/js/funcoesDominio.js" afterPath="$PROJECT_DIR$/matematica/static/js/funcoesDominio.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/matematica/index.html" afterPath="$PROJECT_DIR$/matematica/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/matematica/templates/index.html" afterPath="$PROJECT_DIR$/matematica/templates/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/matematica/views.py" afterPath="$PROJECT_DIR$/matematica/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Funcao.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,37 +34,36 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/matematica/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.8">
-              <caret line="220" column="14" selection-start-line="220" selection-start-column="14" selection-end-line="220" selection-end-column="14" />
+            <state vertical-scroll-proportion="-20.25">
+              <caret line="59" column="105" selection-start-line="59" selection-start-column="97" selection-end-line="59" selection-end-column="105" />
               <folding>
                 <element signature="e#24#59#0" expanded="true" />
+                <element signature="e#298#334#0" expanded="false" />
+                <element signature="e#1520#2051#0" expanded="false" />
+                <element signature="e#2207#2382#0" expanded="false" />
+                <element signature="e#2446#2467#0" expanded="false" />
+                <element signature="e#2573#2599#0" expanded="false" />
+                <element signature="e#2652#2760#0" expanded="false" />
+                <element signature="e#2830#3061#0" expanded="false" />
+                <element signature="e#3094#3228#0" expanded="false" />
+                <element signature="e#3273#3875#0" expanded="false" />
+                <element signature="e#3914#5008#0" expanded="false" />
+                <element signature="e#5699#5818#0" expanded="false" />
+                <element signature="e#5899#6330#0" expanded="false" />
+                <element signature="e#6549#6603#0" expanded="false" />
+                <element signature="e#6631#6994#0" expanded="false" />
+                <element signature="e#7067#7171#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/matematica/index.html">
+        <entry file="file://$PROJECT_DIR$/matematica/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36405006">
-              <caret line="116" column="16" selection-start-line="116" selection-start-column="16" selection-end-line="116" selection-end-column="16" />
-              <folding>
-                <marker date="1439602235129" expanded="true" signature="4729:4784" placeholder="                        &lt;label&gt;Pontos críticos:&lt;/labe... %}" />
-                <marker date="1439602235129" expanded="true" signature="5212:5240" placeholder="                        &lt;b... %}" />
-                <marker date="1439602235129" expanded="true" signature="5241:5269" placeholder="                        &lt;b... %}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="funcoesDominio.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/matematica/static/js/funcoesDominio.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-              <folding>
-                <marker date="1439251261440" expanded="true" signature="4253:4357" placeholder="//..." />
-              </folding>
+            <state vertical-scroll-proportion="0.73770493">
+              <caret line="106" column="78" selection-start-line="106" selection-start-column="78" selection-end-line="106" selection-end-column="78" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -74,9 +76,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/matematica/static/js/funcoesDominio.js" />
-        <option value="$PROJECT_DIR$/matematica/views.py" />
         <option value="$PROJECT_DIR$/matematica/index.html" />
+        <option value="$PROJECT_DIR$/matematica/templates/index.html" />
+        <option value="$PROJECT_DIR$/matematica/views.py" />
+        <option value="$PROJECT_DIR$/matematica/static/js/funcoesDominio.js" />
       </list>
     </option>
   </component>
@@ -90,8 +93,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
     <option name="y" value="24" />
-    <option name="width" value="1865" />
-    <option name="height" value="1086" />
+    <option name="width" value="1855" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -116,6 +119,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -191,7 +195,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -455,10 +458,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1865" height="1086" extended-state="6" />
-    <editor active="true" />
+    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17681941" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14716981" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -493,7 +496,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -501,9 +504,98 @@
     <entry file="file://$PROJECT_DIR$/matematica/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#59#0" expanded="true" />
+            <element signature="e#298#334#0" expanded="false" />
+            <element signature="e#1520#2051#0" expanded="false" />
+            <element signature="e#2207#2382#0" expanded="false" />
+            <element signature="e#2446#2467#0" expanded="false" />
+            <element signature="e#2573#2599#0" expanded="false" />
+            <element signature="e#2652#2760#0" expanded="false" />
+            <element signature="e#2830#3061#0" expanded="false" />
+            <element signature="e#3094#3228#0" expanded="false" />
+            <element signature="e#3273#3875#0" expanded="false" />
+            <element signature="e#3914#5008#0" expanded="false" />
+            <element signature="e#5699#5818#0" expanded="false" />
+            <element signature="e#5899#6330#0" expanded="false" />
+            <element signature="e#6549#6603#0" expanded="false" />
+            <element signature="e#6631#6994#0" expanded="false" />
+            <element signature="e#7067#7171#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/matematica/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/matematica/static/js/funcoesDominio.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="12" selection-start-line="63" selection-start-column="12" selection-end-line="63" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/matematica/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#24#59#0" expanded="true" />
+            <element signature="e#298#334#0" expanded="false" />
+            <element signature="e#1520#2051#0" expanded="false" />
+            <element signature="e#2207#2382#0" expanded="false" />
+            <element signature="e#2446#2467#0" expanded="false" />
+            <element signature="e#2573#2599#0" expanded="false" />
+            <element signature="e#2652#2760#0" expanded="false" />
+            <element signature="e#2830#3061#0" expanded="false" />
+            <element signature="e#3094#3228#0" expanded="false" />
+            <element signature="e#3273#3875#0" expanded="false" />
+            <element signature="e#3914#5008#0" expanded="false" />
+            <element signature="e#5699#5818#0" expanded="false" />
+            <element signature="e#5899#6330#0" expanded="false" />
+            <element signature="e#6549#6603#0" expanded="false" />
+            <element signature="e#6631#6994#0" expanded="false" />
+            <element signature="e#7067#7171#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/matematica/static/js/funcoesDominio.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/matematica/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#59#0" expanded="true" />
+            <element signature="e#298#334#0" expanded="false" />
+            <element signature="e#1520#2051#0" expanded="false" />
+            <element signature="e#2207#2382#0" expanded="false" />
+            <element signature="e#2446#2467#0" expanded="false" />
+            <element signature="e#2573#2599#0" expanded="false" />
+            <element signature="e#2652#2760#0" expanded="false" />
+            <element signature="e#2830#3061#0" expanded="false" />
+            <element signature="e#3094#3228#0" expanded="false" />
+            <element signature="e#3273#3875#0" expanded="false" />
+            <element signature="e#3914#5008#0" expanded="false" />
+            <element signature="e#5699#5818#0" expanded="false" />
+            <element signature="e#5899#6330#0" expanded="false" />
+            <element signature="e#6549#6603#0" expanded="false" />
+            <element signature="e#6631#6994#0" expanded="false" />
+            <element signature="e#7067#7171#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -512,9 +604,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="167" column="34" selection-start-line="167" selection-start-column="34" selection-end-line="168" selection-end-column="72" />
-          <folding>
-            <marker date="1439251261440" expanded="true" signature="4253:4357" placeholder="//..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -532,6 +622,21 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#24#59#0" expanded="true" />
+            <element signature="e#298#334#0" expanded="false" />
+            <element signature="e#1520#2051#0" expanded="false" />
+            <element signature="e#2207#2382#0" expanded="false" />
+            <element signature="e#2446#2467#0" expanded="false" />
+            <element signature="e#2573#2599#0" expanded="false" />
+            <element signature="e#2652#2760#0" expanded="false" />
+            <element signature="e#2830#3061#0" expanded="false" />
+            <element signature="e#3094#3228#0" expanded="false" />
+            <element signature="e#3273#3875#0" expanded="false" />
+            <element signature="e#3914#5008#0" expanded="false" />
+            <element signature="e#5699#5818#0" expanded="false" />
+            <element signature="e#5899#6330#0" expanded="false" />
+            <element signature="e#6549#6603#0" expanded="false" />
+            <element signature="e#6631#6994#0" expanded="false" />
+            <element signature="e#7067#7171#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -552,35 +657,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/matematica/views.py">
+    <entry file="file://$PROJECT_DIR$/funcao/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.8">
-          <caret line="220" column="14" selection-start-line="220" selection-start-column="14" selection-end-line="220" selection-end-column="14" />
-          <folding>
-            <element signature="e#24#59#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/matematica/static/js/funcoesDominio.js">
+    <entry file="file://$PROJECT_DIR$/funcao/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/funcao/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31230283">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
-            <marker date="1439251261440" expanded="true" signature="4253:4357" placeholder="//..." />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/matematica/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36405006">
-          <caret line="116" column="16" selection-start-line="116" selection-start-column="16" selection-end-line="116" selection-end-column="16" />
+        <state vertical-scroll-proportion="-3.3194444">
+          <caret line="109" column="39" selection-start-line="109" selection-start-column="39" selection-end-line="109" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/matematica/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.25">
+          <caret line="59" column="105" selection-start-line="59" selection-start-column="97" selection-end-line="59" selection-end-column="105" />
           <folding>
-            <marker date="1439602235129" expanded="true" signature="4729:4784" placeholder="                        &lt;label&gt;Pontos críticos:&lt;/labe... %}" />
-            <marker date="1439602235129" expanded="true" signature="5212:5240" placeholder="                        &lt;b... %}" />
-            <marker date="1439602235129" expanded="true" signature="5241:5269" placeholder="                        &lt;b... %}" />
+            <element signature="e#24#59#0" expanded="true" />
+            <element signature="e#298#334#0" expanded="false" />
+            <element signature="e#1520#2051#0" expanded="false" />
+            <element signature="e#2207#2382#0" expanded="false" />
+            <element signature="e#2446#2467#0" expanded="false" />
+            <element signature="e#2573#2599#0" expanded="false" />
+            <element signature="e#2652#2760#0" expanded="false" />
+            <element signature="e#2830#3061#0" expanded="false" />
+            <element signature="e#3094#3228#0" expanded="false" />
+            <element signature="e#3273#3875#0" expanded="false" />
+            <element signature="e#3914#5008#0" expanded="false" />
+            <element signature="e#5699#5818#0" expanded="false" />
+            <element signature="e#5899#6330#0" expanded="false" />
+            <element signature="e#6549#6603#0" expanded="false" />
+            <element signature="e#6631#6994#0" expanded="false" />
+            <element signature="e#7067#7171#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/matematica/static/js/funcoesDominio.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4258675">
+          <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/matematica/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.73770493">
+          <caret line="106" column="78" selection-start-line="106" selection-start-column="78" selection-end-line="106" selection-end-column="78" />
+          <folding />
         </state>
       </provider>
     </entry>
