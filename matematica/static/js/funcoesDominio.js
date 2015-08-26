@@ -16,7 +16,7 @@ function esconder(){
 	
 
 $(document).ready(function(){
-	id = ''
+	var id = ''
 	esconder();
 
     $('#botaoEnviarFuncao').click(function(){
@@ -42,24 +42,27 @@ $(document).ready(function(){
 
     $('.btn-func').click(function(){
     	id = $(this).attr('id');
-    	var valor = $(this).prev().val();
-
     	if (id == 'botao1'){
-			if (valor==$.parseJSON(mensagem).IntersecX) {
-				$(this).prev().attr("disabled", true);
+			if ($('#campo3').val()==$.parseJSON(mensagem).IntersecX) {
+				$('#div3').removeClass('has-error').addClass('has-success');
+				$('#campo3').attr("disabled", true);
 				$(this).toggle();
 				$(this).next().toggle();
 				$(this).prev().prev().toggle();
-
 				//proximo
 				$('#ajuda4').show();
 				$('#botao2').next().show();
 				$('#botao2').show();
-				$('#botao2').prev().attr('disabled',false);
+				$('#campo4').attr('disabled',false);
+			}else{
+				$('#div3').addClass('has-error');
 			}
     	}else if (id == 'botao2'){
-			if (valor==$.parseJSON(mensagem).IntersecY) {
-				$(this).prev().attr("disabled", true);
+			if ($('#campo4').val() ==$.parseJSON(mensagem).IntersecY) {
+				alert('pegouu');
+				$('#div4').removeClass('has-error').addClass('has-success');
+				$('#campo4').attr("disabled", true);
+
 				$(this).toggle();
 				$(this).next().toggle();
 				$(this).prev().prev().toggle();
@@ -68,11 +71,16 @@ $(document).ready(function(){
 				$('#ajuda5').show();
 				$('#botao3').next().show();
 				$('#botao3').show();
-				$('#botao3').prev().attr('disabled',false);
+				$('#campo5').attr('disabled',false);
+			}else{
+				$('#div4').addClass('has-error');
 			}
     	}else if (id == 'botao3') {
-			if (valor == $.parseJSON(mensagem).ptnCritico) {
-				$(this).prev().attr("disabled", true);
+			if ($('#campo5').val() == $.parseJSON(mensagem).ptnCritico) {
+				alert(0);
+				$('#div5').removeClass('has-error').addClass('has-success');
+				$('#campo5').attr("disabled", true);
+
 				$(this).toggle();
 				$(this).next().toggle();
 				$(this).prev().prev().toggle();
@@ -81,11 +89,15 @@ $(document).ready(function(){
 				$('#ajuda6').show();
 				$('#botao4').next().show();
 				$('#botao4').show();
-				$('#botao4').prev().attr('disabled', false);
+				$('#campo6').attr('disabled',false);
+			}else{
+				$('#div5').addClass('has-error');
 			}
 		}else if (id == 'botao4') {
-			if (valor == $.parseJSON(mensagem).max) {
-				$(this).prev().attr("disabled", true);
+			if ($('#campo6').val() == $.parseJSON(mensagem).max) {
+				$('#div6').removeClass('has-error').addClass('has-success');
+				$('#campo6').attr("disabled", true);
+
 				$(this).toggle();
 				$(this).next().toggle();
 				$(this).prev().prev().toggle();
@@ -94,11 +106,15 @@ $(document).ready(function(){
 				$('#ajuda7').show();
 				$('#botao5').next().show();
 				$('#botao5').show();
-				$('#botao5').prev().attr('disabled', false);
+				$('#campo7').attr('disabled',false);
+			}else{
+				$('#div6').addClass('has-error');
 			}
 		}else if (id == 'botao5') {
-			if (valor == $.parseJSON(mensagem).min) {
-				$(this).prev().attr("disabled", true);
+			if ($('#campo7').val() == $.parseJSON(mensagem).min) {
+				$('#div7').removeClass('has-error').addClass('has-success');
+				$('#campo7').attr("disabled", true);
+
 				$(this).toggle();
 				$(this).next().toggle();
 				$(this).prev().prev().toggle();
@@ -107,11 +123,15 @@ $(document).ready(function(){
 				$('#ajuda8').show();
 				$('#botao6').next().show();
 				$('#botao6').show();
-				$('#botao6').prev().attr('disabled', false);
+				$('#campo8').attr('disabled', false);
+			}else{
+				$('#div7').addClass('has-error');
 			}
 		}else if (id == 'botao6') {
-			if (valor == $.parseJSON(mensagem).pontInfl) {
-				$(this).prev().attr("disabled", true);
+			if ($('#campo8').val() == $.parseJSON(mensagem).pontInfl) {
+				$('#div8').removeClass('has-error').addClass('has-success');
+				$('#campo8').attr("disabled", true);
+
 				$(this).toggle();
 				$(this).next().toggle();
 				$(this).prev().prev().toggle();
@@ -120,14 +140,11 @@ $(document).ready(function(){
 				$('#ajuda9').show();
 				$('#botao7').next().show();
 				$('#botao7').show();
-				$('#botao7').prev().attr('disabled', false);
+				$('#botao9').attr('disabled', false);
+			}else{
+				$('#div8').addClass('has-error');
 			}
 		}
-
-
-
-
-
     });
 
 
@@ -138,63 +155,84 @@ $(document).ready(function(){
     	var resp = '';
     	id = $(this).attr('id');
     	var anterior = $(this).prev().prev().val();
-    	var cAnterior = $(this).prev().prev();
+		var cAnterior = '';
     	var cProx = '';
     	var num = 0;
-
+		var div = '';
+		var ativar = '';
     	if (id == 'desistir1'){
+			ativar = '#campo4';
     		resp = $.parseJSON(mensagem).IntersecX;
     		cProx = '#botao2';
+			cAnterior = '#campo3';
+			div = '#div3';
     		num = 4;
 
     	}else if (id == 'desistir2'){
+			ativar = '#campo5';
     		resp = $.parseJSON(mensagem).IntersecY;
     		cProx = '#botao3';
+			cAnterior = '#campo4';
+			div = '#div4';
     		num = 5;
 
     	}else if (id == 'desistir3') {
+			ativar = '#campo6';
 			resp = $.parseJSON(mensagem).ptnCritico;
 			cProx = '#botao4';
+			cAnterior = '#campo5';
+			div = '#div5';
 			num = 6;
 
     	}else if (id == 'desistir4') {
+			alert('rrtrt');
+			ativar = '#campo7';
 			resp = $.parseJSON(mensagem).max;
 			cProx = '#botao5';
+			cAnterior = '#campo6';
+			div = '#div6';
 			num = 7;
 
     	}else if (id == 'desistir5'){
+			ativar = '#campo8';
     		resp = $.parseJSON(mensagem).min;
     		cProx = '#botao6';
+			cAnterior = '#campo7';
+			div = '#div7';
     		num = 8;
 
     	}else if (id == 'desistir6'){
+			ativar = '#campo9';
     		resp = $.parseJSON(mensagem).pontInfl;
     		cProx = '#botao7';
+			cAnterior = '#campo8';
+			div = '#div8';
     		num = 9;
 
     	}else if (id == 'desistir7'){
+			ativar = '#campo10';
     		resp = $.parseJSON(mensagem).pontInfl;
     		cProx = '#botao8';
+			div = '#div9';
     		num = 10;
 
     	}else if (id == 'desistir8'){
     		resp = $.parseJSON(mensagem).pontInfl;
     		cProx = '#botao9';
+			div = '#div10';
     		num = 11;
 
     	}
 
     	ant = num-1;
+		$(ativar).attr('disabled',false);
     	$('#ajuda'+ant).toggle();
-    	$('#ajuda'+num).show();
-    	$(cAnterior).val(resp);
-    	$(cAnterior).attr("disabled", true);
-    	$(this).toggle();
-		$(this).prev().toggle();
-
+        $('#ajuda'+num).show();
+        $(cAnterior).val(resp).attr('disabled',true);
+		$(this).toggle().prev().toggle();
 		$(cProx).show();
 		$(cProx).next().show();
-
+		$(div).removeClass('has-error').addClass('has-success');
     });
 
     
@@ -202,10 +240,10 @@ $(document).ready(function(){
 
 
 function enviarDado(id_txt, id_txt2, url, token){
-      
+      		var botao = $(this)
             var texto = $(id_txt).val();
             var texto2 = $(id_txt2).val();
-
+	alert(botao);
 
             var $request=$.ajax({
 				    method: "POST",
@@ -215,18 +253,25 @@ function enviarDado(id_txt, id_txt2, url, token){
 			});
 
             $request.success(function (msg) {
-            				mensagem = msg
-                           alert('IntersecX '+ $.parseJSON(msg).IntersecX + '\nIntersecY '+ $.parseJSON(msg).IntersecY
-                        		   + '\nPontos criticos '+$.parseJSON(msg).ptnCritico
-                        		   + '\nPonto max '+$.parseJSON(msg).max
-                        		   + '\nPonto min '+$.parseJSON(msg).min
-							       + '\nPonto infl '+$.parseJSON(msg).pontInfl
-                        		   );
-                         
+
+						$('#div1,#div2').remove('has-warning').addClass('has-success');
+						alert('ok');
+							mensagem = msg
+                           //alert('IntersecX '+ $.parseJSON(msg).IntersecX + '\nIntersecY '
+							//       + $.parseJSON(msg).IntersecY
+                        	//	   + '\nPontos criticos '+$.parseJSON(msg).ptnCritico
+                        	//	   + '\nPonto max '+$.parseJSON(msg).max
+                        	//	   + '\nPonto min '+$.parseJSON(msg).min
+							//       + '\nPonto infl '+$.parseJSON(msg).pontInfl
+                        	//	   );
+
                         });
 
             $request.fail(function( jqXHR, textStatus ) {
-                            console.log('falha');
+				alert('erro');
+				$('#div1,#div2').remove('has-success').addClass('has-warning');
+				$('#campo3').val('').attr('disabled',true);
+				$('#botao1,#desistir1,#ajuda3').toggle();
         });
 
 

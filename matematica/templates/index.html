@@ -81,60 +81,110 @@
 
 
                     <div id="funcao1">
-                    	<label>Digite a função f(x):</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal1" id="ajuda1">?</button>
-						
-                        <br>
-                        <input class="campoTxt" type="text" id="funcao" name="funcao" placeholder="função" >
-                        <br>
-                
-                        <label id='label'>Digite o Intervalo da função:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal2" id="ajuda2">?</button>
-                        <input class="intervalo" type="text" id="intervalo" name="intervalo" placeholder="intervalo" >
-                       	<button class="btn-func" id="botaoEnviarFuncao" data-token="{{csrf_token}}" data-url="{% url 'funcao1' %}"> Enviar</button>
-                        <br>
-                
-                        <label>Ponto de intersecção da curva com o eixo X :</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal3" id="ajuda3">?</button>
-                        <input class="campoTxt" type="text" id="campo3" name="itr_X" disabled="true">
-                        <button class="btn-func" id="botao1"> Enviar </button>
-                        <button class="btn-des" id="desistir1"> Mostrar resposta </button>	
-                        <br>
-                        
-                        <label>Ponto de intersecção da curva com o eixo Y:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal4" id="ajuda4">?</button>
-                        <input class="campoTxt" type="text" id="campo4" name="itr_Y" disabled="true">
-                        <button class="btn-func" id="botao2"> Enviar </button>
-                        <button class="btn-des" id="desistir2"> Mostrar resposta </button>
-                        <br>
-                
-                        <label>Pontos Críticos:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal5" id="ajuda5">?</button>
-                        <input class="campoTxt"  type="text" id="campo5" name="pontos_criticos" disabled="true">
-                        <button class="btn-func" id="botao3"> Enviar </button>
-                        <button class="btn-des" id="desistir3"> Mostrar resposta </button>
-                        <br>
-                
-                        <label>Máximo da Função:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal6" id="ajuda6">?</button>
-                        <input class="campoTxt" type="text" id="campo6" name="maximo" disabled="true">
-                        <button class="btn-func" id="botao4"> Enviar </button>
-                     	<button class="btn-des" id="desistir4"> Mostrar resposta </button>
-                        <br>
-                        
-                        <label>Mínimo da Função:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal7" id="ajuda7">?</button>
-                        <input class="campoTxt" type="text" id="campo7" name="minimo" disabled="true">
-                        <button class="btn-func" id="botao5"> Enviar </button>
-                        <button class="btn-des" id="desistir5"> Mostrar resposta </button>
-                        <br>
-                
-                        <label>Pontos de Inflexão:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal8" id="ajuda8">?</button>
-                        <input class="campoTxt" type="text" id="campo8" name="pontos_de_inflexao" pattern="[A-Za-z0-9]{6}" title="Promo codes consist of 6 alphanumeric characters." disabled="true">
-                        <button class="btn-func" id="botao6"> Enviar </button>
-                        <button class="btn-des" id="desistir6"> Mostrar resposta </button>
-                        <br>   
+
+                        <div id="divs">
+                            <div id="div1" class="form-group">
+                                <label class="control-label">Digite a função f(x):</label>
+                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal1" id="ajuda1">?</button>
+
+                                <div class="controls">
+                                    <input class="campoTxt form-control" type="text" id="funcao" name="funcao" placeholder="função" >
+                                    <span class="help-block">Woohoo!</span>
+                                </div>
+                            </div>
+
+
+                            <div id="div2" class="form-group">
+                                <label class="control-label" id='label'>Digite o Intervalo da função:</label>
+                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal2" id="ajuda2">?</button>
+
+                                <div class="controls">
+                                    <input class="campoTxt form-control"  type="text" id="intervalo" name="intervalo" placeholder="intervalo">
+                                    <span class="help-block">Woohoo!</span>
+                                </div>
+                            </div>
+
+                            <button class="btn-func btn btn-success" id="botaoEnviarFuncao" data-token="{{csrf_token}}" data-url="{% url 'funcao1' %}"> Enviar</button>
+
+
+                            <div id="div3" class="form-group">
+                                <label class="control-label">Ponto de intersecção da curva com o eixo X :</label>
+                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal3" id="ajuda3">?</button>
+
+                                <div class="'controls">
+                                    <input class="campoTxt form-control" type="text" id="campo3" name="itr_X" disabled="true">
+                                    <span class="help-block">Woohoo!</span>
+                                </div>
+
+                                <button class="btn-func btn-info btn" id="botao1"> Enviar </button>
+                                <button class="btn-des btn btn-warning btn-xs" id="desistir1"> Mostrar resposta </button>
+                            </div>
+
+                            <div id="div4" class="form-group">
+                                <label>Ponto de intersecção da curva com o eixo Y:</label>
+                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal4" id="ajuda4">?</button>
+
+                                <div class="'controls">
+                                    <input class="campoTxt form-control" type="text" id="campo4" name="itr_Y" disabled="true">
+                                    <span class="help-block">Woohoo!</span>
+                                </div>
+
+                                 <button class="btn-func btn-info btn" id="botao2"> Enviar </button>
+                                <button class="btn-des btn btn-warning btn-xs" id="desistir2"> Mostrar resposta </button>
+                            </div>
+
+                            <div id="div5" class="form-group">
+                                <label>Pontos Críticos:</label>
+                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal5" id="ajuda5">?</button>
+
+                                <div class="'controls">
+                                    <input class="campoTxt form-control"  type="text" id="campo5" name="pontos_criticos" disabled="true">
+                                    <span class="help-block">Woohoo!</span>
+                                </div>
+
+                                 <button class="btn-func btn-info btn" id="botao3"> Enviar </button>
+                                <button class="btn-des btn btn-warning btn-xs" id="desistir3"> Mostrar resposta </button>
+                            </div>
+
+                            <div id="div6" class="form-group">
+                                <label>Máximo da Função:</label>
+                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal6" id="ajuda6">?</button>
+
+                                <div class="'controls">
+                                    <input class="campoTxt form-control"  type="text" id="campo6" name="maximo" disabled="true">
+                                </div>
+
+                                 <button class="btn-func btn-info btn" id="botao4"> Enviar </button>
+                                <button class="btn-des btn btn-warning btn-xs" id="desistir4"> Mostrar resposta </button>
+                            </div>
+
+                            <div id="div7" class="form-group">
+                                <label>Mínimo da Função:</label>
+                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal7" id="ajuda7">?</button>
+
+                                <div class="'controls">
+                                    <input class="campoTxt form-control"  type="text" id="campo7" name="minimo" disabled="true">
+                                </div>
+
+                                 <button class="btn-func btn-info btn" id="botao5"> Enviar </button>
+                                <button class="btn-des btn btn-warning btn-xs" id="desistir5"> Mostrar resposta </button>
+                            </div>
+
+                            <div id="div8" class="form-group">
+                                <label>Pontos de Inflexão:</label>
+                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal8" id="ajuda8">?</button>
+
+                                <div class="'controls">
+                                    <input class="campoTxt form-control"  type="text" id="campo7" name="pontos_de_inflexao" disabled="true">
+                                </div>
+
+                                 <button class="btn-func btn-info btn" id="botao6"> Enviar </button>
+                                <button class="btn-des btn btn-warning btn-xs" id="desistir6"> Mostrar resposta </button>
+                            </div>
+
+                        </div>
+
+
                          
                         <label>Assíntota Horizontal:</label>
                         <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal9" id="ajuda9">?</button>
