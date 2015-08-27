@@ -14,13 +14,24 @@ function esconder(){
 	}
 }	
 	
+function esconderAlerts(id){
+	$(id).prop('style',"visibility: hidden; display:none;");
+}
 
 $(document).ready(function(){
 	var id = ''
 	esconder();
+	esconderAlerts('#alert1');
+	esconderAlerts('#alert2');
+	esconderAlerts('#alert3');
+
+	//$("#alert1").prop('style',"visibility: none; display:block;");
 
     $('#botaoEnviarFuncao').click(function(){
-
+		esconderAlerts('#alert1');
+		esconderAlerts('#alert2');
+		esconderAlerts('#alert3');
+		reset();
     	var url = $(this).data('url')
     	var token = $(this).data('token')
     	enviarDado('#funcao','#intervalo',url, token);
@@ -59,7 +70,6 @@ $(document).ready(function(){
 			}
     	}else if (id == 'botao2'){
 			if ($('#campo4').val() ==$.parseJSON(mensagem).IntersecY) {
-				alert('pegouu');
 				$('#div4').removeClass('has-error').addClass('has-success');
 				$('#campo4').attr("disabled", true);
 
@@ -77,7 +87,6 @@ $(document).ready(function(){
 			}
     	}else if (id == 'botao3') {
 			if ($('#campo5').val() == $.parseJSON(mensagem).ptnCritico) {
-				alert(0);
 				$('#div5').removeClass('has-error').addClass('has-success');
 				$('#campo5').attr("disabled", true);
 
@@ -185,7 +194,6 @@ $(document).ready(function(){
 			num = 6;
 
     	}else if (id == 'desistir4') {
-			alert('rrtrt');
 			ativar = '#campo7';
 			resp = $.parseJSON(mensagem).max;
 			cProx = '#botao5';
@@ -213,12 +221,15 @@ $(document).ready(function(){
 			ativar = '#campo10';
     		resp = $.parseJSON(mensagem).pontInfl;
     		cProx = '#botao8';
+			cAnterior = '#campo9';
 			div = '#div9';
     		num = 10;
 
     	}else if (id == 'desistir8'){
+			ativar=='';
     		resp = $.parseJSON(mensagem).pontInfl;
     		cProx = '#botao9';
+			cAnterior = '#campo10';
 			div = '#div10';
     		num = 11;
 
@@ -238,12 +249,16 @@ $(document).ready(function(){
     
 });
 
+function reset(){
+	for (var i = 3 ; i <= 10 ; i++){
+		$('#campo'+i).val('');
+	}
+}
 
 function enviarDado(id_txt, id_txt2, url, token){
       		var botao = $(this)
             var texto = $(id_txt).val();
             var texto2 = $(id_txt2).val();
-	alert(botao);
 
             var $request=$.ajax({
 				    method: "POST",
@@ -255,7 +270,7 @@ function enviarDado(id_txt, id_txt2, url, token){
             $request.success(function (msg) {
 
 						$('#div1,#div2').remove('has-warning').addClass('has-success');
-						alert('ok');
+
 							mensagem = msg
                            //alert('IntersecX '+ $.parseJSON(msg).IntersecX + '\nIntersecY '
 							//       + $.parseJSON(msg).IntersecY
@@ -268,10 +283,21 @@ function enviarDado(id_txt, id_txt2, url, token){
                         });
 
             $request.fail(function( jqXHR, textStatus ) {
-				alert('erro');
+				//alert('erro');
 				$('#div1,#div2').remove('has-success').addClass('has-warning');
 				$('#campo3').val('').attr('disabled',true);
 				$('#botao1,#desistir1,#ajuda3').toggle();
+
+				if (texto=='' && texto2 == '') {
+					$("#alert1").prop('style', "visibility: none; display:block;");
+					$("#alert2").prop('style', "visibility: none; display:block;");
+				}else if (texto == '') {
+					$("#alert1").prop('style', "visibility: none; display:block;");
+				}else if (texto2 == '') {
+					$("#alert2").prop('style', "visibility: none; display:block;");
+				}else{
+					$("#alert3").prop('style', "visibility: none; display:block;");
+				}
         });
 
 

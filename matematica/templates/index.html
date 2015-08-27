@@ -37,7 +37,9 @@
 <body>
 
 
+
 	<div class="container-fluid">	
+
 
 		<nav class="navbar navbar-default navbar-fixed-top"> <!--cabeçalho-->
 			<div class="container">
@@ -54,6 +56,7 @@
 					<li>
 						<a href="#">Projeto</a>
 					</li>
+
 					<li>
 						<a href="#">Contato</a>
 					</li>
@@ -61,7 +64,7 @@
 				</ul>
 
 			</div><!-- navbar-main -->
-			</div><!-- container -->
+        </div><!-- container -->
 		
 		</nav> <!-- Fecha o "navbar navbar-default navbar-fixed-top"-->
 
@@ -69,11 +72,11 @@
 
 			<div class="col-md-3" id= "put">
             
-       			<ul class="abas">
-                    <li><a href="#funcao1">Função 1</a></li>
+{#       			<ul class="abas">#}
+{#                    <li><a href="#funcao1">Função 1</a></li>#}
 {#                    <li><a href="#funcao2">Função 2</a></li>#}
 {#                    <li><a href="#funcao3">Função 3</a></li>#}
-                </ul>
+{#                </ul>#}
                 
                 <div id="separa"></div>
                 <div id="funcoes"> <!--conteudo -->
@@ -83,6 +86,7 @@
                     <div id="funcao1">
 
                         <div id="divs">
+
                             <div id="div1" class="form-group">
                                 <label class="control-label">Digite a função f(x):</label>
                                 <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal1" id="ajuda1">?</button>
@@ -93,6 +97,13 @@
                                 </div>
                             </div>
 
+                            <div style=" display:none;" class="alert alert-warning alert-dismissible " role="alert" id="alert1"  disabled="disabled">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;
+                                    </span>
+                                </button>
+                                <strong>Atenção!</strong> Digite uma função.
+                            </div>
 
                             <div id="div2" class="form-group">
                                 <label class="control-label" id='label'>Digite o Intervalo da função:</label>
@@ -103,6 +114,23 @@
                                     <span class="help-block">Woohoo!</span>
                                 </div>
                             </div>
+
+                            <div style=" display:none;" class="alert alert-warning alert-dismissible " role="alert" id="alert2"  disabled="disabled">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;
+                                    </span>
+                                </button>
+                                <strong>Atenção!</strong> Digite o intervalo da função.
+                            </div>
+
+                            <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert3"  disabled="disabled">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;
+                                    </span>
+                                </button>
+                                <strong>Erro!</strong> Função ou Intervalo inválido.
+                            </div>
+
 
                             <button class="btn-func btn btn-success" id="botaoEnviarFuncao" data-token="{{csrf_token}}" data-url="{% url 'funcao1' %}"> Enviar</button>
 
@@ -175,31 +203,38 @@
                                 <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal8" id="ajuda8">?</button>
 
                                 <div class="'controls">
-                                    <input class="campoTxt form-control"  type="text" id="campo7" name="pontos_de_inflexao" disabled="true">
+                                    <input class="campoTxt form-control"  type="text" id="campo8" name="pontos_de_inflexao" disabled="true">
                                 </div>
 
                                  <button class="btn-func btn-info btn" id="botao6"> Enviar </button>
                                 <button class="btn-des btn btn-warning btn-xs" id="desistir6"> Mostrar resposta </button>
                             </div>
 
+                            <div id="div9" class="form-group">
+                                <label>Assíntota Horizontal:</label>
+                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal9" id="ajuda9">?</button>
+
+                                <div class="'controls">
+                                    <input class="campoTxt form-control"  type="text" id="campo9" name="aH" disabled="true">
+                                </div>
+
+                                 <button class="btn-func btn-info btn" id="botao7"> Enviar </button>
+                                <button class="btn-des btn btn-warning btn-xs" id="desistir7"> Mostrar resposta </button>
+                            </div>
+
+                            <div id="div10" class="form-group">
+                                <label>Assíntota Vertical:</label>
+                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal10" id="ajuda10">?</button>
+
+                                <div class="'controls">
+                                    <input class="campoTxt form-control"  type="text" id="campo10" name="aV" disabled="true">
+                                </div>
+
+                                 <button class="btn-func btn-info btn" id="botao8"> Enviar </button>
+                                <button class="btn-des btn btn-warning btn-xs" id="desistir8"> Mostrar resposta </button>
+                            </div>
                         </div>
 
-
-                         
-                        <label>Assíntota Horizontal:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal9" id="ajuda9">?</button>
-                        <input class="campoTxt" type="text" id="campo9" name="aH" disabled="true">
-                        <button class="btn-func" id="botao7"> Enviar </button>
-                        <button class="btn-des" id="desistir7"> Mostrar resposta </button>
-                        <br>
-
-
-                        <label>Assíntota Vertical:</label>
-                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal10" id="ajuda10">?</button>
-                        <input class="campoTxt" type="text" id="campo10" name="aV" disabled="true">
-                        <button class="btn-func" id="botao8"> Enviar </button>
-                        <button class="btn-des" id="desistir8"> Mostrar resposta </button>
-                        <br>
 
               		</div><!-- Fecha função1 -->
                     
