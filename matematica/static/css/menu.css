@@ -1,13 +1,17 @@
 .btnbtn-infobtn-lg{
-	-webkit-border-radius: 20px 20px;
-	font-weight: bold;
-	border-color: #8B0000	;
-	background-color: #FFFFFF;
+	/*-webkit-border-radius: 20px 20px;*/
+	font-size: x-small;
+	border-color: #A52A2A	;
+	background-color: #FF0000;
+    border-radius: 4px;
+    height: 15px;
+    width: 15px;
+    color: white;
 }
 
-.alert{
-    display: none;
-}
+/*.alert{*/
+    /**/
+/*}*/
 
 /*#menu{*/
 	/*display: block;*/

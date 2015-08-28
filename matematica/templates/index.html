@@ -37,11 +37,10 @@
 <body>
 
 
-
 	<div class="container-fluid">	
 
 
-		<nav class="navbar navbar-default navbar-fixed-top"> <!--cabeçalho-->
+		<nav class="navbar navbar-default navbar-fixed-top" id="idnav"> <!--cabeçalho-->
 			<div class="container">
 				<div class="navbar-header">
 					<a class="navbar-brand" href = "#">Math@Cpt</a>
@@ -97,13 +96,13 @@
                                 </div>
                             </div>
 
-                            <div style=" display:none;" class="alert alert-warning alert-dismissible " role="alert" id="alert1"  disabled="disabled">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;
-                                    </span>
-                                </button>
-                                <strong>Atenção!</strong> Digite uma função.
-                            </div>
+{#                            <div style=" display:none;" class="alert alert-warning alert-dismissible " role="alert" id="alert1">#}
+{#                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">#}
+{#                                    <span aria-hidden="true">&times;#}
+{#                                    </span>#}
+{#                                </button>#}
+{#                                <strong>Atenção!</strong> Digite uma função.#}
+{#                            </div>#}
 
                             <div id="div2" class="form-group">
                                 <label class="control-label" id='label'>Digite o Intervalo da função:</label>
@@ -115,21 +114,21 @@
                                 </div>
                             </div>
 
-                            <div style=" display:none;" class="alert alert-warning alert-dismissible " role="alert" id="alert2"  disabled="disabled">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;
-                                    </span>
-                                </button>
-                                <strong>Atenção!</strong> Digite o intervalo da função.
-                            </div>
+{#                            <div style=" display:none;" class="alert alert-warning alert-dismissible " role="alert" id="alert2">#}
+{#                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">#}
+{#                                    <span aria-hidden="true">&times;#}
+{#                                    </span>#}
+{#                                </button>#}
+{#                                <strong>Atenção!</strong> Digite o intervalo da função.#}
+{#                            </div>#}
 
-                            <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert3"  disabled="disabled">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;
-                                    </span>
-                                </button>
-                                <strong>Erro!</strong> Função ou Intervalo inválido.
-                            </div>
+{#                            <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert3">#}
+{#                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">#}
+{#                                    <span aria-hidden="true">&times;#}
+{#                                    </span>#}
+{#                                </button>#}
+{#                                <strong>Erro!</strong> Função ou Intervalo inválido.#}
+{#                            </div>#}
 
 
                             <button class="btn-func btn btn-success" id="botaoEnviarFuncao" data-token="{{csrf_token}}" data-url="{% url 'funcao1' %}"> Enviar</button>
@@ -433,6 +432,38 @@
 		</div> 
         
 	</div> <!--Fecha o "container-fluid"-->
+
+
+{#    <div  class="alert alert-warning alert-dismissible " role="alert" id="alert8">#}
+{#        <button type="button" class="close" data-dismiss="alert" aria-label="Close">#}
+{#            <span aria-hidden="true">&times;#}
+{#            </span>#}
+{#        </button>#}
+{#        <strong>Atenção!</strong> Digite uma função.#}
+{#    </div>#}
+    <div style=" display:none;" class="alert alert-warning alert-dismissible " role="alert" id="alert1">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Atenção!</strong> Digite uma função.
+    </div>
+
+    <div style=" display:none;" class="alert alert-warning alert-dismissible " role="alert" id="alert2">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Atenção!</strong> Digite o intervalo da função.
+    </div>
+
+    <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert3">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Erro!</strong> Ponto de Intersecção da curva com o eixo X está errado.
+    </div>
+
+
+
 </body>
 </html>
 

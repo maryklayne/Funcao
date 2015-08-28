@@ -5,12 +5,10 @@ function esconder(){
 	//esconder botões
 	for (var i = 3; i <= 12; i++) {
 	    var variavel = '#ajuda'+ i;
+		var resp = i-2;
 	    $(variavel).toggle();
-	    var resp = i-2;
-	    $('#resp'+resp).toggle();  
 	    $('#botao'+resp).toggle();
 	    $('#desistir'+resp).toggle();
-		//$('#campo'+resp).prop('readOnly',false);
 	}
 }	
 	
@@ -19,26 +17,19 @@ function esconderAlerts(id){
 }
 
 $(document).ready(function(){
-	var id = ''
+	var id = '';
 	esconder();
 	esconderAlerts('#alert1');
 	esconderAlerts('#alert2');
-	esconderAlerts('#alert3');
+	//esconderAlerts('#alert3');
 
 	//$("#alert1").prop('style',"visibility: none; display:block;");
 
     $('#botaoEnviarFuncao').click(function(){
-		esconderAlerts('#alert1');
-		esconderAlerts('#alert2');
-		esconderAlerts('#alert3');
-		reset();
+		//reset();
     	var url = $(this).data('url')
     	var token = $(this).data('token')
     	enviarDado('#funcao','#intervalo',url, token);
-    	$('#botao1').show();
-    	$('#desistir1').show();
-    	$("#campo3").prop('disabled',false).focus();
-    	$("#ajuda3").show();
     });
     
     //x**3-3*x**2-9*x+7
@@ -67,6 +58,7 @@ $(document).ready(function(){
 				$('#campo4').attr('disabled',false);
 			}else{
 				$('#div3').addClass('has-error');
+				$("#alert3").prop('style', "visibility: none; display:block;");
 			}
     	}else if (id == 'botao2'){
 			if ($('#campo4').val() ==$.parseJSON(mensagem).IntersecY) {
@@ -236,6 +228,7 @@ $(document).ready(function(){
     	}
 
     	ant = num-1;
+
 		$(ativar).attr('disabled',false);
     	$('#ajuda'+ant).toggle();
         $('#ajuda'+num).show();
@@ -251,8 +244,12 @@ $(document).ready(function(){
 
 function reset(){
 	for (var i = 3 ; i <= 10 ; i++){
-		$('#campo'+i).val('');
+		$('#campo'+i).val('').attr('disabled',true);
+		$('#div'+i).removeClass('has-error');
+		$('#div'+i).removeClass('has-success');
+
 	}
+
 }
 
 function enviarDado(id_txt, id_txt2, url, token){
@@ -271,7 +268,7 @@ function enviarDado(id_txt, id_txt2, url, token){
 
 						$('#div1,#div2').remove('has-warning').addClass('has-success');
 
-							mensagem = msg
+							mensagem = msg;
                            //alert('IntersecX '+ $.parseJSON(msg).IntersecX + '\nIntersecY '
 							//       + $.parseJSON(msg).IntersecY
                         	//	   + '\nPontos criticos '+$.parseJSON(msg).ptnCritico
@@ -279,24 +276,25 @@ function enviarDado(id_txt, id_txt2, url, token){
                         	//	   + '\nPonto min '+$.parseJSON(msg).min
 							//       + '\nPonto infl '+$.parseJSON(msg).pontInfl
                         	//	   );
+							reset();
+							$('#botao1,#desistir1,#ajuda3').show();
+							$('#campo3').attr('disabled',false);
 
                         });
 
             $request.fail(function( jqXHR, textStatus ) {
-				//alert('erro');
-				$('#div1,#div2').remove('has-success').addClass('has-warning');
-				$('#campo3').val('').attr('disabled',true);
-				$('#botao1,#desistir1,#ajuda3').toggle();
+				reset();
 
-				if (texto=='' && texto2 == '') {
+
+				$('#div1,#div2').remove('has-success').addClass('has-warning');
+				if (texto == '') {
 					$("#alert1").prop('style', "visibility: none; display:block;");
-					$("#alert2").prop('style', "visibility: none; display:block;");
-				}else if (texto == '') {
-					$("#alert1").prop('style', "visibility: none; display:block;");
+					$("#alert2").prop('style',"visibility: hidden; display:none;");
+
 				}else if (texto2 == '') {
 					$("#alert2").prop('style', "visibility: none; display:block;");
-				}else{
-					$("#alert3").prop('style', "visibility: none; display:block;");
+					$("#alert1").prop('style',"visibility: hidden; display:none;");
+
 				}
         });
 
