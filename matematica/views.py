@@ -39,14 +39,14 @@ def funcao1(request):  #num/sqrt(deno)+gfdgf
 	
 	#IntersecX
 	intx = IntersecX(campo1)
-
+	print  intx
 	#IntersecY
 	inty = IntersecY(campo1)
 
 	#converter de unicode para sympify
 	campo1 = sympify(campo1) 
 	funcaoUnicode = sympify(campo1) 
-
+	print 'ok'
 	#Pontos Crítico
 	raizesDaDerivada = str(pontosCritico(campo1, funcaoUnicode))
 
@@ -74,6 +74,7 @@ def IntersecX(funcao):
 		except:
 			res=res[0]
 		res = (res, 0.0)
+		print res
 	elif len(res)==2:
 		try:
 			res1 = round(float(res[0]),2)
@@ -91,14 +92,18 @@ def IntersecX(funcao):
 			res1 = res[0]
 			res2 = res[1]
 			res3 = res[2]
-		res = (res1,res2,res3)	
+		res = (res1,res2,res3)
+	elif len(res)==0:
+		return 'impossivel calcular'
 	if res == -0.0:
 		res = 0.0
 	return res
 	
 def IntersecY(funcao):
 	res = lambdify(x,funcao)
+	print res
 	res = round(float(res(0)),2)
+
 	if res == -0.0:
 		res = 0.0
 	return 0.0,res
@@ -178,10 +183,11 @@ def ptMaxAndMin(funcao, intervalo):
 
 	i = 0
 	while i < len(raizes):
-	#	print 'raize ', raizes[i]
+		# print 'raize ', raizes
 		calc = dx2.subs(x,raizes[i])
-		#print calc
+		# print 'calc ' ,calc
 		lista = [raizes[i],calc]
+		# print lista
 		resultado.append(lista)
 		i=i+1
 	#print 'lista dos resultados ',resultado

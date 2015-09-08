@@ -92,7 +92,7 @@
 
                                 <div class="controls">
                                     <input class="campoTxt form-control" type="text" id="funcao" name="funcao" placeholder="função" >
-                                    <span class="help-block">Woohoo!</span>
+{#                                    <span class="help-block">Woohoo!</span>#}
                                 </div>
                             </div>
 
@@ -110,7 +110,7 @@
 
                                 <div class="controls">
                                     <input class="campoTxt form-control"  type="text" id="intervalo" name="intervalo" placeholder="intervalo">
-                                    <span class="help-block">Woohoo!</span>
+{#                                    <span class="help-block">Woohoo!</span>#}
                                 </div>
                             </div>
 
@@ -140,7 +140,7 @@
 
                                 <div class="'controls">
                                     <input class="campoTxt form-control" type="text" id="campo3" name="itr_X" disabled="true">
-                                    <span class="help-block">Woohoo!</span>
+{#                                    <span class="help-block">Woohoo!</span>#}
                                 </div>
 
                                 <button class="btn-func btn-info btn" id="botao1"> Enviar </button>
@@ -153,7 +153,7 @@
 
                                 <div class="'controls">
                                     <input class="campoTxt form-control" type="text" id="campo4" name="itr_Y" disabled="true">
-                                    <span class="help-block">Woohoo!</span>
+{#                                    <span class="help-block">Woohoo!</span>#}
                                 </div>
 
                                  <button class="btn-func btn-info btn" id="botao2"> Enviar </button>
@@ -166,7 +166,7 @@
 
                                 <div class="'controls">
                                     <input class="campoTxt form-control"  type="text" id="campo5" name="pontos_criticos" disabled="true">
-                                    <span class="help-block">Woohoo!</span>
+{#                                    <span class="help-block">Woohoo!</span>#}
                                 </div>
 
                                  <button class="btn-func btn-info btn" id="botao3"> Enviar </button>
@@ -209,29 +209,29 @@
                                 <button class="btn-des btn btn-warning btn-xs" id="desistir6"> Mostrar resposta </button>
                             </div>
 
-                            <div id="div9" class="form-group">
-                                <label>Assíntota Horizontal:</label>
-                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal9" id="ajuda9">?</button>
-
-                                <div class="'controls">
-                                    <input class="campoTxt form-control"  type="text" id="campo9" name="aH" disabled="true">
-                                </div>
-
-                                 <button class="btn-func btn-info btn" id="botao7"> Enviar </button>
-                                <button class="btn-des btn btn-warning btn-xs" id="desistir7"> Mostrar resposta </button>
-                            </div>
-
-                            <div id="div10" class="form-group">
-                                <label>Assíntota Vertical:</label>
-                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal10" id="ajuda10">?</button>
-
-                                <div class="'controls">
-                                    <input class="campoTxt form-control"  type="text" id="campo10" name="aV" disabled="true">
-                                </div>
-
-                                 <button class="btn-func btn-info btn" id="botao8"> Enviar </button>
-                                <button class="btn-des btn btn-warning btn-xs" id="desistir8"> Mostrar resposta </button>
-                            </div>
+{#                            <div id="div9" class="form-group">#}
+{#                                <label>Assíntota Horizontal:</label>#}
+{#                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal9" id="ajuda9">?</button>#}
+{##}
+{#                                <div class="'controls">#}
+{#                                    <input class="campoTxt form-control"  type="text" id="campo9" name="aH" disabled="true">#}
+{#                                </div>#}
+{##}
+{#                                 <button class="btn-func btn-info btn" id="botao7"> Enviar </button>#}
+{#                                <button class="btn-des btn btn-warning btn-xs" id="desistir7"> Mostrar resposta </button>#}
+{#                            </div>#}
+{##}
+{#                            <div id="div10" class="form-group">#}
+{#                                <label>Assíntota Vertical:</label>#}
+{#                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal10" id="ajuda10">?</button>#}
+{##}
+{#                                <div class="'controls">#}
+{#                                    <input class="campoTxt form-control"  type="text" id="campo10" name="aV" disabled="true">#}
+{#                                </div>#}
+{##}
+{#                                 <button class="btn-func btn-info btn" id="botao8"> Enviar </button>#}
+{#                                <button class="btn-des btn btn-warning btn-xs" id="desistir8"> Mostrar resposta </button>#}
+{#                            </div>#}
                         </div>
 
 
@@ -445,14 +445,14 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <strong>Atenção!</strong> Digite uma função.
+        <strong>Atenção!</strong> O campo da função está vazio.
     </div>
 
     <div style=" display:none;" class="alert alert-warning alert-dismissible " role="alert" id="alert2">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <strong>Atenção!</strong> Digite o intervalo da função.
+        <strong>Atenção!</strong> O campo do intervalo está vazio.
     </div>
 
     <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert3">
@@ -462,7 +462,40 @@
         <strong>Erro!</strong> Ponto de Intersecção da curva com o eixo X está errado.
     </div>
 
+    <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert4">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Erro!</strong> Ponto de Intersecção da curva com o eixo Y está errado.
+    </div>
 
+    <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert5">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Erro!</strong> O campo de Pontos Críticos está errado.
+    </div>
+
+    <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert6">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Erro!</strong> O campo de Máximo da Função está errado.
+    </div>
+
+    <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert7">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Erro!</strong> O campo de Mínimo da Função está errado.
+    </div>
+
+    <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert8">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Erro!</strong> O campo de Pontos de Inflexão está errado.
+    </div>
 
 </body>
 </html>

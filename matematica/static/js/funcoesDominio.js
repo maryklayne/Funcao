@@ -19,9 +19,11 @@ function esconderAlerts(id){
 $(document).ready(function(){
 	var id = '';
 	esconder();
-	esconderAlerts('#alert1');
-	esconderAlerts('#alert2');
-	//esconderAlerts('#alert3');
+	//for (var i = 1 ; i < 9 ; i++){
+	//	esconderAlerts('#alert1');
+	//}
+
+
 
 	//$("#alert1").prop('style',"visibility: none; display:block;");
 
@@ -76,6 +78,7 @@ $(document).ready(function(){
 				$('#campo5').attr('disabled',false);
 			}else{
 				$('#div4').addClass('has-error');
+				$("#alert4").prop('style', "visibility: none; display:block;");
 			}
     	}else if (id == 'botao3') {
 			if ($('#campo5').val() == $.parseJSON(mensagem).ptnCritico) {
@@ -93,6 +96,7 @@ $(document).ready(function(){
 				$('#campo6').attr('disabled',false);
 			}else{
 				$('#div5').addClass('has-error');
+				$("#alert5").prop('style', "visibility: none; display:block;");
 			}
 		}else if (id == 'botao4') {
 			if ($('#campo6').val() == $.parseJSON(mensagem).max) {
@@ -110,6 +114,7 @@ $(document).ready(function(){
 				$('#campo7').attr('disabled',false);
 			}else{
 				$('#div6').addClass('has-error');
+				$("#alert6").prop('style', "visibility: none; display:block;");
 			}
 		}else if (id == 'botao5') {
 			if ($('#campo7').val() == $.parseJSON(mensagem).min) {
@@ -127,6 +132,7 @@ $(document).ready(function(){
 				$('#campo8').attr('disabled', false);
 			}else{
 				$('#div7').addClass('has-error');
+				$("#alert7").prop('style', "visibility: none; display:block;");
 			}
 		}else if (id == 'botao6') {
 			if ($('#campo8').val() == $.parseJSON(mensagem).pontInfl) {
@@ -144,6 +150,7 @@ $(document).ready(function(){
 				$('#botao9').attr('disabled', false);
 			}else{
 				$('#div8').addClass('has-error');
+				$("#alert8").prop('style', "visibility: none; display:block;");
 			}
 		}
     });
@@ -243,8 +250,8 @@ $(document).ready(function(){
 });
 
 function reset(){
-	for (var i = 3 ; i <= 10 ; i++){
-		$('#campo'+i).val('').attr('disabled',true);
+	for (var i = 3 ; i <= 8 ; i++){
+		$('#campo'+i).val('').prop('disabled',true);
 		$('#div'+i).removeClass('has-error');
 		$('#div'+i).removeClass('has-success');
 
