@@ -1,0 +1,2 @@
+class erroFuncaoException(Exception):
+    pass

@@ -131,11 +131,25 @@
 {#                            </div>#}
 
 
+
                             <button class="btn-func btn btn-success" id="botaoEnviarFuncao" data-token="{{csrf_token}}" data-url="{% url 'funcao1' %}"> Enviar</button>
 
+                            <br><br>
+                            <div style=" display:none; visibility:hidden;"  id="div20" class="form-group">
+                                <label>Delta (Δ):</label>
+                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal20" id="ajuda20">?</button>
 
-                            <div id="div3" class="form-group">
-                                <label class="control-label">Ponto de intersecção da curva com o eixo X :</label>
+                                <div class="'controls">
+                                    <input class="campoTxt form-control"  type="text" id="campo20" name="delta">
+                                </div>
+
+                                <button class="btn-func btn-info btn" id="botao20"> Enviar </button>
+                                <button class="btn-des btn btn-warning btn-xs" id="desistir20"> Mostrar resposta </button>
+                            </div>
+
+
+                            <div style=" display:none; visibility:hidden;" id="div3" class="form-group">
+                                <label class="control-label"  >Ponto de intersecção da curva com o eixo X :</label>
                                 <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal3" id="ajuda3">?</button>
 
                                 <div class="'controls">
@@ -147,7 +161,7 @@
                                 <button class="btn-des btn btn-warning btn-xs" id="desistir1"> Mostrar resposta </button>
                             </div>
 
-                            <div id="div4" class="form-group">
+                            <div style=" display:none; visibility:hidden;" id="div4" class="form-group">
                                 <label>Ponto de intersecção da curva com o eixo Y:</label>
                                 <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal4" id="ajuda4">?</button>
 
@@ -160,7 +174,7 @@
                                 <button class="btn-des btn btn-warning btn-xs" id="desistir2"> Mostrar resposta </button>
                             </div>
 
-                            <div id="div5" class="form-group">
+                            <div style=" display:none; visibility:hidden;" id="div5" class="form-group">
                                 <label>Pontos Críticos:</label>
                                 <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal5" id="ajuda5">?</button>
 
@@ -173,7 +187,7 @@
                                 <button class="btn-des btn btn-warning btn-xs" id="desistir3"> Mostrar resposta </button>
                             </div>
 
-                            <div id="div6" class="form-group">
+                            <div style=" display:none; visibility:hidden;" id="div6" class="form-group">
                                 <label>Máximo da Função:</label>
                                 <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal6" id="ajuda6">?</button>
 
@@ -185,7 +199,7 @@
                                 <button class="btn-des btn btn-warning btn-xs" id="desistir4"> Mostrar resposta </button>
                             </div>
 
-                            <div id="div7" class="form-group">
+                            <div style=" display:none; visibility:hidden;" id="div7" class="form-group">
                                 <label>Mínimo da Função:</label>
                                 <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal7" id="ajuda7">?</button>
 
@@ -197,7 +211,7 @@
                                 <button class="btn-des btn btn-warning btn-xs" id="desistir5"> Mostrar resposta </button>
                             </div>
 
-                            <div id="div8" class="form-group">
+                            <div style=" display:none; visibility:hidden;" id="div8" class="form-group">
                                 <label>Pontos de Inflexão:</label>
                                 <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal8" id="ajuda8">?</button>
 
@@ -209,7 +223,9 @@
                                 <button class="btn-des btn btn-warning btn-xs" id="desistir6"> Mostrar resposta </button>
                             </div>
 
-{#                            <div id="div9" class="form-group">#}
+
+
+{#                          <div style=" display:none; visibility:hidden;" id="div9" class="form-group">#}
 {#                                <label>Assíntota Horizontal:</label>#}
 {#                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal9" id="ajuda9">?</button>#}
 {##}
@@ -221,7 +237,7 @@
 {#                                <button class="btn-des btn btn-warning btn-xs" id="desistir7"> Mostrar resposta </button>#}
 {#                            </div>#}
 {##}
-{#                            <div id="div10" class="form-group">#}
+{#                            <div style=" display:none; visibility:hidden;" id="div10" class="form-group">#}
 {#                                <label>Assíntota Vertical:</label>#}
 {#                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal10" id="ajuda10">?</button>#}
 {##}
@@ -415,6 +431,27 @@
                         </div>
                       </div>
                     </div>
+
+                    <div class="container">
+                      <div class="modal fade" id="myModal20" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda Fórmula de Bhaskara</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>Seja a função f(x) = ax² + bx + c</p>
+                              <p>Basca substibuir os valores de a,b e c na fórmula de Bhaskara:</p>
+                              <p>Δ = b²-4*a*c </p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
             
             </div> <!-- fecha a div col-md-3-->
 			
@@ -496,6 +533,14 @@
         </button>
         <strong>Erro!</strong> O campo de Pontos de Inflexão está errado.
     </div>
+
+    <div style=" display:none;" class="alert alert-danger" role="alert" id="alert9">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Erro no Intervalo!</strong> Digite um intervalo válido.
+    </div>
+
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.http.response import HttpResponse
+from matematica.exception import erroFuncaoException
 import sympy
 import json
 import re
@@ -23,48 +24,108 @@ def funcao1(request):  #num/sqrt(deno)+gfdgf
 
 	campo1 = request.POST["funcao"]
 	campo2 = request.POST["intervalo"]
-	print 'função ',campo1
-		
-	#if (campo1.count('sqrt')==0): #corrigir isso
-	#campo1 = str(ratsimp(campo1)) #deixa a funcao com um unico denominador, ex: (1/x + 1/y) passa a ser (x + y)/(x*y)
-	
-	tipo = escolheTipo(campo1)
-	
-	#Calcular Dominio
-#	print calcularDominio(campo1, tipo)
-
-	#Definir intervalo de valores de X
-	intervalo = calcIntervalo(campo2)
-	print 'intervalo ', intervalo
-	
-	#IntersecX
-	intx = IntersecX(campo1)
-	print  intx
-	#IntersecY
-	inty = IntersecY(campo1)
-
-	#converter de unicode para sympify
-	campo1 = sympify(campo1) 
-	funcaoUnicode = sympify(campo1) 
-	print 'ok'
-	#Pontos Crítico
-	raizesDaDerivada = str(pontosCritico(campo1, funcaoUnicode))
-
-	#Maximo e Minimo
-	maxAndMin = ptMaxAndMin(campo1,intervalo)
-
-	#Pont de Inflexao
-	pontInflx = pontInflexao(campo1)
-
-	dados = json.dumps({'IntersecX':str(intx), 'IntersecY':str(inty),
-	'ptnCritico': raizesDaDerivada[1:-1],'min':str(maxAndMin[0][0]),'max':str(maxAndMin[1][0]), 'pontInfl':str(pontInflx[0])})
-
-	return HttpResponse(dados, content_type='application/json') #retornar lista
 
 
+	try:
+		grau = identificarGrau(campo1)
+		inter = calcularIntervalo(campo2)
+	except erroFuncaoException as dados:
+		print dados.message
+		return HttpResponse(dados.message,status=403)
 
-		
-		
+	if grau == 'segundo grau':
+		calcDelta(campo1)
+		return HttpResponse(grau, content_type='application/json')
+
+
+# 	#if (campo1.count('sqrt')==0): #corrigir isso
+# 	#campo1 = str(ratsimp(campo1)) #deixa a funcao com um unico denominador, ex: (1/x + 1/y) passa a ser (x + y)/(x*y)
+#
+# 	tipo = escolheTipo(campo1)
+#
+# 	#Calcular Dominio
+# #	print calcularDominio(campo1, tipo)
+#
+# 	#Definir intervalo de valores de X
+# 	intervalo = calcIntervalo(campo2)
+#
+# 	#IntersecX
+# 	intx = IntersecX(campo1)
+#
+# 	#IntersecY
+# 	inty = IntersecY(campo1)
+#
+# 	#converter de unicode para sympify
+# 	campo1 = sympify(campo1)
+# 	funcaoUnicode = sympify(campo1)
+#
+# 	#Pontos Crítico
+# 	raizesDaDerivada = str(pontosCritico(campo1, funcaoUnicode))
+#
+# 	#Maximo e Minimo
+# 	maxAndMin = ptMaxAndMin(campo1,intervalo)
+#
+# 	#Pont de Inflexao
+# 	pontInflx = pontInflexao(campo1)
+
+	# dados = json.dumps({'IntersecX':str(intx), 'IntersecY':str(inty),
+	# 'ptnCritico': raizesDaDerivada[1:-1],'min':str(maxAndMin[0][0]),'max':str(maxAndMin[1][0]), 'pontInfl':str(pontInflx[0])})
+
+	# return HttpResponse(dados, content_type='application/json') #retornar lista
+
+def identificarGrau(funcao):
+	f = str(sympify(funcao))
+	print f
+
+	if f.__contains__('**2') and not(f.__contains__('**3')):
+		return 'segundo grau'
+
+
+
+
+# def bhaskara(funcao):
+# def xLinha(funcao):
+
+def verificaIntervalo(valor1,valor2):
+	if valor1<valor2:
+		return true
+	else:
+		return false
+
+
+
+def calcularIntervalo(intervalo):
+
+	try:
+		lista = str(intervalo).split(',')
+		um = float(lista[0][1:])
+		dois = float(lista[1][:-1])
+
+		if (lista[0][0])=='(':
+			print 'aberto'
+			um = um - 0.01
+		elif (lista[0][0])=='[':
+			print 'fechado'
+
+		if (lista[1][-1])==')':
+			print 'aberto'
+			dois = dois - 0.01
+		elif (lista[1][-1])==']':
+			print 'fechado'
+		if (verificaIntervalo(um,dois)):
+			return '['+str(um)+','+str(dois)+']'
+		else:
+			return 'intervalo inválido'
+	except:
+		raise erroFuncaoException('intervalo invalido')
+
+def calcDelta(funcao):
+	print funcao
+
+
+
+
+
 def IntersecX(funcao):
 	res = solve(funcao, x)
 
@@ -98,7 +159,7 @@ def IntersecX(funcao):
 	if res == -0.0:
 		res = 0.0
 	return res
-	
+
 def IntersecY(funcao):
 	res = lambdify(x,funcao)
 	print res
@@ -107,7 +168,7 @@ def IntersecY(funcao):
 	if res == -0.0:
 		res = 0.0
 	return 0.0,res
-	
+
 def calcIntervalo(valor):
 	valor = valor.replace('(','')
 	valor = valor.replace(')','')
@@ -115,23 +176,23 @@ def calcIntervalo(valor):
 	#print 'Valores para x assumir ', valor[0], ' e ', valor[1]
 	return [valor[0],valor[1]]
 
-def calcDerivada(funcao): #Calcula a derivada de uma função 
+def calcDerivada(funcao): #Calcula a derivada de uma função
 	return funcao.diff(x)
-	
+
 def calcDerivada2(dx): #Calcular as raízes da derivada ou seja, igualar a derivada a 0, exemplo: dy=0
-	return sympy.solve(dx, x)	
-	
+	return sympy.solve(dx, x)
+
 def subResultNaFuncao(funcaoUnicode, resultado):
 	respostas = [funcaoUnicode.subs(x, c) for c in resultado]
 	print 'raízfdfdes ',respostas
-	
+
 	return respostas
-	
+
 def calcLimitesDaFuncao(resultadoDafuncao, funcaoUnicode, valor):
 	funcaoUnicode = str(funcaoUnicode)
 	i = 0
 	print 'fdsfds',resultadoDafuDncao
-	
+
 	temp = ''
 	while i < len(funcaoUnicode): #values.append(y.subs(x, range[0]))
 		temp += funcaoUnicode[i].replace('x',str(valor[0]))
@@ -248,16 +309,16 @@ def pontInflexao(funcao):
 #	if (lim1 == lim2):
 #		print lim1
 #	print 'nao existe assintota horizontal'
-	
+
 
 def raiz(funcao):
 
 	funcao = sympify(funcao[5:-1])
 	res = reduce_inequalities(S(0) <= funcao, [x])  #calcula a inequação
 	print 'res ', res
-	#print "D(f) = {x ∈ |R /", res, "}"		
-	
-		
+	#print "D(f) = {x ∈ |R /", res, "}"
+
+
 def calcularDominio(funcao, tipo):
 	if (tipo==1):
 		return "todos os reais"
@@ -268,26 +329,26 @@ def calcularDominio(funcao, tipo):
 		funcao = sympify(lista[1])
 		result = str(reduce_inequalities(S(0) <= funcao, [x]))  #calcula a inequação
 		res = result.replace('<=','≠')
-		return res		
+		return res
 	elif (tipo==4):
 		lista = funcao.split("/")
 		funcao1 = sympify(lista[1])
 		funcao2 = sympify(lista[2])
-		
+
 		#calc numerador
 		print raiz(funcao1)
-		
+
 #		print "numerador raiz e denominador"
 #	if (tipo==5):
 #		print "numerador raiz e denominador raiz"
 #	if (tipo==6):
 #		print "numerador e denominador raiz"
-	
+
 
 def temDenominador(funcao): #verificar se tem denominador
 	if(funcao.count("/")==0):
 		return false
-	return true	
+	return true
 
 def escolheTipo(funcao):
 	tipo = 1
@@ -301,23 +362,23 @@ def escolheTipo(funcao):
 	#	elif(temRaizTotal(num)):
 	#		return 4
 	#	elif(temRaizTotal(deno)):
-	#		return 6	 
+	#		return 6
 		return 3
 	if(temRaizTotal(funcao)):
 		return 2
 #	else:
-#		return tipo	
+#		return tipo
 #	print 'tipo'
 
 	return tipo
 
-	
+
 def temRaizTotal(funcao): #verifica se tem raiz em todo denominador
 	if(funcao.count( "sqrt" )==1): #corrigir esta funcao   #re.compile e findAll
 		return true
 	return false
-	
-	
+
+
 #def tipoDaFuncao(tipo):
 #	if (tipo==1):
 #		print "numerador"
@@ -331,5 +392,5 @@ def temRaizTotal(funcao): #verifica se tem raiz em todo denominador
 #		print "numerador raiz e denominador raiz"
 #	if (tipo==6):
 #		print "numerador e denominador raiz"
-	
-	
+
+
