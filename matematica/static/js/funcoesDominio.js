@@ -274,7 +274,11 @@ function enviarDado(id_txt, id_txt2, url, token){
                 $('#div1,#div2').remove('has-warning').addClass('has-success');
 
                 if (msg=='segundo grau'){
-                    $("#div20").prop('style',"visibility: none; display:block;");
+                	for ( var i = 20 ; i < 23 ; i++){
+                		$("#div"+i).prop('style',"visibility: none; display:block;");
+                	}
+
+
                 }
 
 //                for (var i = 1 ; i < 10 ; i++){//apagar os alerts de erro

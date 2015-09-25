@@ -34,7 +34,13 @@ def funcao1(request):  #num/sqrt(deno)+gfdgf
 		return HttpResponse(dados.message,status=403)
 
 	if grau == 'segundo grau':
-		calcDelta(campo1)
+		discriminant = calcDelta(campo1)
+		r = calcRaizes(campo1, discriminant)
+		c = calcConcavidade(campo1,discriminant)
+
+		dados = json.dumps({'delta':discriminant, 'raizes':r,'concavidade':c})
+
+
 		return HttpResponse(grau, content_type='application/json')
 
 
@@ -80,12 +86,6 @@ def identificarGrau(funcao):
 	if f.__contains__('**2') and not(f.__contains__('**3')):
 		return 'segundo grau'
 
-
-
-
-# def bhaskara(funcao):
-# def xLinha(funcao):
-
 def verificaIntervalo(valor1,valor2):
 	if valor1<valor2:
 		return true
@@ -95,7 +95,6 @@ def verificaIntervalo(valor1,valor2):
 
 
 def calcularIntervalo(intervalo):
-
 	try:
 		lista = str(intervalo).split(',')
 		um = float(lista[0][1:])
@@ -120,11 +119,40 @@ def calcularIntervalo(intervalo):
 		raise erroFuncaoException('intervalo invalido')
 
 def calcDelta(funcao):
-	print funcao
+	delta = discriminant(funcao)
+	print 'delta ', delta
+	return delta
 
+def calcRaizes(funcao,delt):
+	if (delt > 0):
+		xis = str(poly(funcao).all_roots())
+		xis = xis[1:-1].split(',')
+		return "x'="+xis[0]+" e x''="+xis[1]
 
+def calcB(funcao):
+	lista = list(sympify(funcao).args)
+	b = '0'
+	a = '0'
+	for i in range(len(lista)):
+		varia = str(lista[i])
+		print varia
+		if '*x**2' in varia:
+			a = varia.replace('*x**2','')
+		elif 'x**2' in varia:
+			a = '1'
+		elif '*x' in varia:
+			b = varia.replace('*x','')
+			print 'b ', b
+		elif 'x' in varia:
+			b = '1'
+	return [a,b]
 
-
+def calcConcavidade(funcao, delt):
+	a = float(calcB(funcao)[0])
+	b = float(calcB(funcao)[1])
+	primeiro = round((-1*(b)/2*a),2)
+	segundo = round((-1*delt/4*a),2)
+	return (primeiro,segundo)
 
 def IntersecX(funcao):
 	res = solve(funcao, x)
