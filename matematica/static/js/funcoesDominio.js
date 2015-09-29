@@ -1,5 +1,5 @@
 var mensagem = ''
-
+var reques = ''
 
 function esconder(){
 	//esconder botões
@@ -41,8 +41,52 @@ $(document).ready(function(){
 
 
 
-//    $('.btn-func').click(function(){
-//    	id = $(this).attr('id');
+    $('.btn-func').click(function(){
+    	var id = $(this).attr('id');
+
+    	if (id == 'botao20'){
+
+			if ($('#campo20').val()==$.parseJSON(mensagem).delta) {
+				$('#div20').removeClass('has-error').addClass('has-success');
+				$('#campo20').attr("disabled", true);
+				$(this).toggle();
+				$(this).next().toggle();
+				$(this).prev().prev().toggle();
+				//proximo
+				$('#ajuda21').show();
+				$('#botao21').next().show();
+				$('#botao21').show();
+				$('#campo21').attr('disabled',false);
+				$("#alert20").prop('style', "visibility: none; display:none;");
+			}else{
+				$("#div20").removeClass('has-sucess').addClass('has-error');
+				$("#alert20").prop('style', "visibility: none; display:block;");
+			}
+
+    	}else if(id = 'botao21'){
+
+    		if ($('#campo21').val()==$.parseJSON(mensagem).delta) {
+				$('#div21').removeClass('has-error').addClass('has-success');
+				$('#campo21').attr("disabled", true);
+				$(this).toggle();
+				$(this).next().toggle();
+				$(this).prev().prev().toggle();
+				//proximo
+				$('#ajuda22').show();
+				$('#botao22').next().show();
+				$('#botao22').show();
+				$('#campo22').attr('disabled',false);
+				$("#alert21").prop('style', "visibility: none; display:none;");
+			}else{
+				$("#div21").removeClass('has-sucess').addClass('has-error');
+				$("#alert21").prop('style', "visibility: none; display:block;");
+			}
+
+    	}
+		alert(id);
+
+
+
 //    	if (id == 'botao1'){
 //			if ($('#campo3').val()==$.parseJSON(mensagem).IntersecX) {
 //				$('#div3').removeClass('has-error').addClass('has-success');
@@ -150,21 +194,48 @@ $(document).ready(function(){
 //				$("#alert8").prop('style', "visibility: none; display:block;");
 //			}
 //		}
-//    });
 
 
 
 
 
-//    $('.btn-des').click(function(){
-//    	var resp = '';
-//    	id = $(this).attr('id');
-//    	var anterior = $(this).prev().prev().val();
-//		var cAnterior = '';
-//    	var cProx = '';
-//    	var num = 0;
-//		var div = '';
-//		var ativar = '';
+
+
+    });
+
+
+
+
+
+    $('.btn-des').click(function(){
+    	var resp = '';
+    	id = $(this).attr('id');
+    	var anterior = $(this).prev().prev().val();
+		var cAnterior = '';
+    	var cProx = '';
+    	var num = 0;
+		var div = '';
+		var ativar = '';
+
+    	if (id == 'desistir20'){
+    		ativar = '#campo21'
+    		resp = reques.delta
+			cAnterior = '#campo20';
+    		cProx = '#botao21';
+			div = '#div20';
+    		num = 21;
+
+    	}else if (id == 'desistir21'){
+    		ativar = '#campo22'
+    		resp = reques.raizes
+			cAnterior = '#campo21';
+    		cProx = '#botao22';
+			div = '#div21';
+    		num = 22;
+
+    	}
+
+
 //    	if (id == 'desistir1'){
 //			ativar = '#campo4';
 //    		resp = $.parseJSON(mensagem).IntersecX;
@@ -231,17 +302,17 @@ $(document).ready(function(){
 //
 //    	}
 //
-//    	ant = num-1;
-//
-//		$(ativar).attr('disabled',false);
-//    	$('#ajuda'+ant).toggle();
-//        $('#ajuda'+num).show();
-//        $(cAnterior).val(resp).attr('disabled',true);
-//		$(this).toggle().prev().toggle();
-//		$(cProx).show();
-//		$(cProx).next().show();
-//		$(div).removeClass('has-error').addClass('has-success');
-//    });
+    	ant = num-1;
+		$("#alert"+ant).prop('style', "visibility: none; display:none;");
+		$(ativar).attr('disabled',false);
+    	$('#ajuda'+ant).toggle();
+        $('#ajuda'+num).show();
+        $(cAnterior).val(resp).attr('disabled',true);
+		$(this).toggle().prev().toggle();
+		$(cProx).show();
+		$(cProx).next().show();
+		$(div).removeClass('has-error').addClass('has-success');
+    });
 
     
 });
@@ -270,10 +341,11 @@ function enviarDado(id_txt, id_txt2, url, token){
 
 
             $request.success(function (msg) {
-                alert(msg);
+            	grau = $.parseJSON(msg).grau
+				reques = $.parseJSON(msg)
                 $('#div1,#div2').remove('has-warning').addClass('has-success');
 
-                if (msg=='segundo grau'){
+                if (grau=='segundo grau'){
                 	for ( var i = 20 ; i < 23 ; i++){
                 		$("#div"+i).prop('style',"visibility: none; display:block;");
                 	}
@@ -304,6 +376,7 @@ function enviarDado(id_txt, id_txt2, url, token){
             });
 
             $request.fail(function( jqXHR, textStatus ) {
+          		alert(textStatus)
 //				reset();
 
                 if (jqXHR.responseText === 'intervalo invalido'){

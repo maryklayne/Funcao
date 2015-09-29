@@ -36,12 +36,13 @@ def funcao1(request):  #num/sqrt(deno)+gfdgf
 	if grau == 'segundo grau':
 		discriminant = calcDelta(campo1)
 		r = calcRaizes(campo1, discriminant)
-		c = calcConcavidade(campo1,discriminant)
+		v = calcConcavidade(campo1,discriminant)
+		print 'raiz ',r,' concavidade ',v,'delta ',discriminant
 
-		dados = json.dumps({'delta':discriminant, 'raizes':r,'concavidade':c})
+		retorno = json.dumps({'grau':grau,'delta':str(discriminant),'raizes':r, 'vertice':str(v)})
 
-
-		return HttpResponse(grau, content_type='application/json')
+		print 'enviar2'
+		return HttpResponse(retorno, content_type='application/json')
 
 
 # 	#if (campo1.count('sqrt')==0): #corrigir isso
@@ -128,30 +129,57 @@ def calcRaizes(funcao,delt):
 		xis = str(poly(funcao).all_roots())
 		xis = xis[1:-1].split(',')
 		return "x'="+xis[0]+" e x''="+xis[1]
+	elif (delt == 0):
+		xis = str(poly(funcao).all_roots())
+		xis = xis[1:-1].split(',')
+		return "x'="+xis[0]
+	else:
+		return 'a função não admite raízes reais'
+
 
 def calcB(funcao):
 	lista = list(sympify(funcao).args)
+	print lista
 	b = '0'
 	a = '0'
+
+	try:
+		if str(lista[0])=='x' and float(lista[1]):
+			lista = ['x**'+str(lista[1])]
+	except:
+		print 'entrou'
+
+	print lista
 	for i in range(len(lista)):
 		varia = str(lista[i])
-		print varia
+		print 'var ',varia
 		if '*x**2' in varia:
 			a = varia.replace('*x**2','')
+		elif '-x**2' in varia:
+			a = '-1'
 		elif 'x**2' in varia:
 			a = '1'
 		elif '*x' in varia:
 			b = varia.replace('*x','')
-			print 'b ', b
+		elif '-x' in varia:
+			b = '-1'
 		elif 'x' in varia:
 			b = '1'
+	print 'a ',a
+	print 'b ',b
 	return [a,b]
 
 def calcConcavidade(funcao, delt):
+	print 'delta ',delt
 	a = float(calcB(funcao)[0])
 	b = float(calcB(funcao)[1])
-	primeiro = round((-1*(b)/2*a),2)
-	segundo = round((-1*delt/4*a),2)
+
+	primeiro = round((-1*(b)/(2*a)),2)
+	segundo = round((-1*delt/(4*a)),2)
+	if primeiro == -0.0:
+		primeiro = 0.0
+	if segundo == -0.0:
+		segundo = 0.0
 	return (primeiro,segundo)
 
 def IntersecX(funcao):
