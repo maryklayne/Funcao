@@ -6,6 +6,7 @@ import sympy
 import json
 import re
 from sympy import *
+from sympy.logic.algorithms.dpll import find_unit_clause
 
 x = Symbol('x')
 y = Symbol('y')
@@ -24,10 +25,11 @@ def funcao1(request):  #num/sqrt(deno)+gfdgf
 
 	campo1 = request.POST["funcao"]
 	campo2 = request.POST["intervalo"]
-
+	campo1 = reoganiza(campo1)
 
 	try:
 		grau = identificarGrau(campo1)
+		print 'xxxxx ',campo1
 		inter = calcularIntervalo(campo2)
 	except erroFuncaoException as dados:
 		print dados.message
@@ -81,8 +83,9 @@ def funcao1(request):  #num/sqrt(deno)+gfdgf
 	# return HttpResponse(dados, content_type='application/json') #retornar lista
 
 def identificarGrau(funcao):
-	f = str(sympify(funcao))
-	print f
+	f = sympify(funcao)
+	f = str(f).replace(' ',"")
+	campo1 = sympify(f)
 
 	if f.__contains__('**2') and not(f.__contains__('**3')):
 		return 'segundo grau'
@@ -93,6 +96,8 @@ def verificaIntervalo(valor1,valor2):
 	else:
 		return false
 
+def reoganiza(funcao):
+	return expand(funcao)
 
 
 def calcularIntervalo(intervalo):
@@ -142,7 +147,7 @@ def calcB(funcao):
 	print lista
 	b = '0'
 	a = '0'
-
+	c = '0'
 	try:
 		if str(lista[0])=='x' and float(lista[1]):
 			lista = ['x**'+str(lista[1])]
@@ -153,7 +158,14 @@ def calcB(funcao):
 	for i in range(len(lista)):
 		varia = str(lista[i])
 		print 'var ',varia
-		if '*x**2' in varia:
+
+		if '-x**2/' in varia:
+			a = varia.replace('-x**2','')
+			a = '-1'+a
+		elif 'x**2/' in varia:
+			a = varia.replace('x**2','')
+			a = '1'+a
+		elif '*x**2' in varia:
 			a = varia.replace('*x**2','')
 		elif '-x**2' in varia:
 			a = '-1'
@@ -165,8 +177,11 @@ def calcB(funcao):
 			b = '-1'
 		elif 'x' in varia:
 			b = '1'
+		else:
+			c=varia
 	print 'a ',a
 	print 'b ',b
+	print 'c ',c
 	return [a,b]
 
 def calcConcavidade(funcao, delt):
