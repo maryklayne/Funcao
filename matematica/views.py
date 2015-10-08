@@ -7,6 +7,12 @@ import json
 import re
 from sympy import *
 from sympy.logic.algorithms.dpll import find_unit_clause
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
+from django.http.response import HttpResponse
+from django.shortcuts import render
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+
 
 x = Symbol('x')
 y = Symbol('y')
@@ -464,4 +470,13 @@ def temRaizTotal(funcao): #verifica se tem raiz em todo denominador
 #	if (tipo==6):
 #		print "numerador e denominador raiz"
 
+def registrar(request):
+    print request.POST
+    form=UserCreationForm(request.POST or None)
 
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return HttpResponse('OK')
+
+    return render(request,'cadastro.html',{'form':form})

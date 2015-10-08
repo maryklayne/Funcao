@@ -2,9 +2,14 @@
   background-color: white;
 }
 
-#separa{
-  margin-left: -15px;
+#cont{
+  margin-top: 5px;
   background:#E6E6FA;
+  margin-left:500px;
+  margin-right:500px;
+  font-size:large;
+
+
 }
 
 .container{

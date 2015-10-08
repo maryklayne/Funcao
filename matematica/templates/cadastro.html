@@ -1,0 +1,203 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset= "UTF-8"/>
+    <title>Math@Cpt</title>
+    
+    <!-- Importes do menu com abas -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estiloMenuAbas.css'%} " />
+
+    <script type="text/javascript" src="{% static 'js/javascriptMenuAbas.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/javascriptMenuAbas.js' %}"></script>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script> <!--ESSE ARQUIVO TEM QUE SER LOCAL!!! -->
+  	<script src="{% static 'js/jquery2.min.js' %}"></script><!--ESSE ARQUIVO TEM QUE SER LOCAL!!! oq eles fazem -->
+    
+    
+	<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+    <script src="{% static 'js/funcoesDominio.js' %}"></script>
+	<script src="{% static 'js/menu.js' %}"></script>
+	<script src="{% static 'js/funcoesEixoX.js' %}"></script>
+	
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"><!--Importando o Boot-->
+	
+	<link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/fotos.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/CollPersonalizadas.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}"/>
+
+</head>
+
+
+<body>
+
+
+	<div class="container-fluid">	
+
+
+		<nav class="navbar navbar-default navbar-fixed-top" id="idnav"> <!--cabeçalho-->
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href = "#">Math@Cpt</a>
+				</div>
+
+			<div id="navbar-main" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="#">Homes</a>
+					</li>
+			
+					<li>
+						<a href="#">Projeto</a>
+					</li>
+
+					<li>
+						<a href="#">Contato</a>
+					</li>
+
+				</ul>
+
+			</div><!-- navbar-main -->
+        </div><!-- container -->
+		
+		</nav> <!-- Fecha o "navbar navbar-default navbar-fixed-top"-->
+
+		<div class="row">
+
+
+                <div id="cont">
+                    <h1>Cadastro de usuário</h1>
+                    <div id="funcao1"> <!--conteudo -->
+
+
+
+                            <form method="post" action="{% url 'registro' %}">
+                                {% csrf_token %}
+                                {{ form }}
+                                <input type="submit">
+                            </form>
+                        <br><br><br><br><br><br>
+
+                        < id="divs">
+
+                            <div id="div1" class="form-group">
+                                <label class="control-label">Digite a função f(x):</label>
+                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal1" id="ajuda1">?</button>
+
+                                <div class="controls">
+                                    <input class="campoTxt form-control" type="text" id="funcao" name="funcao" placeholder="função" >
+{#                                    <span class="help-block">Woohoo!</span>#}
+                                </div>
+                            </div>
+
+                </div> <!-- fecha a div funcoes-->
+
+		</div>	<!-- fecha row-->
+	
+		<br><br><br>
+		 <div class="panel-footer">Rodapé
+			Copyright 2015 - by Math@Cpt
+			Facebook | Twitter
+		</div> 
+        
+	</div> <!--Fecha o "container-fluid"-->
+
+
+{#    <div  class="alert alert-warning alert-dismissible " role="alert" id="alert8">#}
+{#        <button type="button" class="close" data-dismiss="alert" aria-label="Close">#}
+{#            <span aria-hidden="true">&times;#}
+{#            </span>#}
+{#        </button>#}
+{#        <strong>Atenção!</strong> Digite uma função.#}
+{#    </div>#}
+    <div style=" display:none;" class="alert alert-warning alert-dismissible " role="alert" id="alert1">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Atenção!</strong> O campo da função está vazio.
+    </div>
+
+    <div style=" display:none;" class="alert alert-warning alert-dismissible " role="alert" id="alert2">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Atenção!</strong> O campo do intervalo está vazio.
+    </div>
+
+    <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert3">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Erro!</strong> Ponto de Intersecção da curva com o eixo X está errado.
+    </div>
+
+    <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert4">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Erro!</strong> Ponto de Intersecção da curva com o eixo Y está errado.
+    </div>
+
+    <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert5">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Erro!</strong> O campo de Pontos Críticos está errado.
+    </div>
+
+    <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert6">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Erro!</strong> O campo de Máximo da Função está errado.
+    </div>
+
+    <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert7">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Erro!</strong> O campo de Mínimo da Função está errado.
+    </div>
+
+    <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert8">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Erro!</strong> O campo de Pontos de Inflexão está errado.
+    </div>
+
+    <div style=" display:none;" class="alert alert-danger" role="alert" id="alert9">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Erro no Intervalo!</strong> Digite um intervalo válido.
+    </div>
+
+    <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert20">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Atenção!</strong> Valor do delta está errado!
+    </div>
+
+    <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert21">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Atenção!</strong> Valor de x' e/ou x'' está errado!
+    </div>
+
+    <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alert22">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Atenção!</strong> Valor do Vértica está errado!
+    </div>
+</body>
+</html>
+
